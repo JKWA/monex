@@ -10,9 +10,6 @@ defmodule Monex.Either do
 
   def left(value), do: Left.pure(value)
 
-  def either?(%Left{}), do: true
-  def either?(%Right{}), do: true
-
   def left?(%Left{}), do: true
   def left?(_), do: false
 
