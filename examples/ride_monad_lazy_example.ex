@@ -11,6 +11,7 @@ defmodule Examples.RideLazyTaskMonad do
     LazyTaskEither.pure(Patron.new(name, height, tickets))
   end
 
+  @spec check_valid_height(task_either_t()) :: task_either_t()
   def check_valid_height(patron) do
     patron
     |> LazyTaskEither.lift_predicate(&Patron.valid_height?/1, fn ->
@@ -18,11 +19,13 @@ defmodule Examples.RideLazyTaskMonad do
     end)
   end
 
+  @spec check_ticket_availability(task_either_t()) :: task_either_t()
   def check_ticket_availability(patron) do
     patron
     |> LazyTaskEither.lift_predicate(&Patron.has_ticket?/1, fn -> "Patron is out of tickets" end)
   end
 
+  @spec take_ride(task_either_t()) :: task_either_t()
   def take_ride(patron) do
     result =
       patron
