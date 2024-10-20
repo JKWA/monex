@@ -85,4 +85,46 @@ defmodule Monex.Maybe do
       fn -> Nothing.pure() end
     )
   end
+
+  @spec from_nil(nil | value) :: t(value)
+        when value: term()
+  def from_nil(nil), do: Nothing.pure()
+  def from_nil(value), do: Just.pure(value)
+
+  @spec to_nil(t(value)) :: nil | value
+        when value: term()
+  def to_nil(maybe) do
+    fold(maybe, fn value -> value end, fn -> nil end)
+  end
+
+  @spec from_try((-> right)) :: t(right) when right: term()
+  def from_try(func) do
+    try do
+      result = func.()
+      Just.pure(result)
+    rescue
+      _exception ->
+        Nothing.pure()
+    end
+  end
+
+  @spec to_try!(t(right), String.t()) :: right | no_return when right: term()
+  def to_try!(maybe, message \\ "Nothing value encountered") do
+    case maybe do
+      %Just{value: value} -> value
+      %Nothing{} -> raise message
+    end
+  end
+
+  @spec from_result({:ok, right} | {:error, term()}) :: t(right) when right: term()
+  def from_result({:ok, value}), do: Just.pure(value)
+  def from_result({:error, _reason}), do: Nothing.pure()
+
+  @spec to_result(t(right)) :: {:ok, right} | {:error, :nothing} when right: term()
+  def to_result(maybe) do
+    case maybe do
+      %Just{value: value} -> {:ok, value}
+      %Nothing{} -> {:error, :nothing}
+    end
+  end
 end

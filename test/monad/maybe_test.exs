@@ -392,4 +392,70 @@ defmodule Monex.MaybeTest do
       assert result == Maybe.nothing()
     end
   end
+
+  describe "from_nil/1" do
+    test "converts nil to Nothing" do
+      assert Maybe.from_nil(nil) == %Maybe.Nothing{}
+    end
+
+    test "converts non-nil value to Just" do
+      assert Maybe.from_nil(42) == %Maybe.Just{value: 42}
+    end
+
+    test "converts non-nil value (string) to Just" do
+      assert Maybe.from_nil("hello") == %Maybe.Just{value: "hello"}
+    end
+  end
+
+  describe "to_nil/1" do
+    test "converts Just to the contained value" do
+      assert Maybe.to_nil(%Maybe.Just{value: 42}) == 42
+    end
+
+    test "converts Nothing to nil" do
+      assert Maybe.to_nil(%Maybe.Nothing{}) == nil
+    end
+
+    test "converts Just (string) to the contained string value" do
+      assert Maybe.to_nil(%Maybe.Just{value: "hello"}) == "hello"
+    end
+  end
+
+  describe "to_try!/2" do
+    test "returns value from Maybe.Just" do
+      assert Maybe.to_try!(%Maybe.Just{value: 42}) == 42
+    end
+
+    test "raises an error for Maybe.Nothing with default message" do
+      assert_raise RuntimeError, "Nothing value encountered", fn ->
+        Maybe.to_try!(%Maybe.Nothing{})
+      end
+    end
+
+    test "raises an error for Maybe.Nothing with custom message" do
+      assert_raise RuntimeError, "Custom error message", fn ->
+        Maybe.to_try!(%Maybe.Nothing{}, "Custom error message")
+      end
+    end
+  end
+
+  describe "from_result/1" do
+    test "converts {:ok, value} to Maybe.Just" do
+      assert Maybe.from_result({:ok, 42}) == %Maybe.Just{value: 42}
+    end
+
+    test "converts {:error, reason} to Maybe.Nothing" do
+      assert Maybe.from_result({:error, "some error"}) == %Maybe.Nothing{}
+    end
+  end
+
+  describe "to_result/1" do
+    test "converts Maybe.Just to {:ok, value}" do
+      assert Maybe.to_result(%Maybe.Just{value: 42}) == {:ok, 42}
+    end
+
+    test "converts Maybe.Nothing to {:error, :nothing}" do
+      assert Maybe.to_result(%Maybe.Nothing{}) == {:error, :nothing}
+    end
+  end
 end

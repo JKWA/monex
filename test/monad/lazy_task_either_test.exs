@@ -333,40 +333,33 @@ defmodule LazyTaskEitherTest do
     end
   end
 
-  describe "from_try/1" do
+  describe "LazyTaskEither.from_try/1" do
     test "converts a successful function into LazyTaskEither.Right" do
-      result =
-        LazyTaskEither.from_try(fn -> 42 end)
-        |> LazyTaskEither.run()
+      result = LazyTaskEither.from_try(fn -> 42 end)
 
-      assert result == Either.right(42)
+      assert LazyTaskEither.run(result) == %Either.Right{value: 42}
     end
 
     test "converts a raised exception into LazyTaskEither.Left" do
-      result =
-        LazyTaskEither.from_try(fn -> raise "error" end)
-        |> LazyTaskEither.run()
+      result = LazyTaskEither.from_try(fn -> raise "error" end)
 
-      assert result == Either.left(%RuntimeError{message: "error"})
+      assert LazyTaskEither.run(result) == %Either.Left{value: %RuntimeError{message: "error"}}
     end
   end
 
-  describe "to_try/1" do
-    test "converts LazyTaskEither.Right to {:ok, value}" do
+  describe "LazyTaskEither.to_try!/1" do
+    test "returns value from LazyTaskEither.Right" do
       lazy_result = LazyTaskEither.right(42)
-      assert LazyTaskEither.to_try(lazy_result) == {:ok, 42}
+      assert LazyTaskEither.to_try!(lazy_result) == 42
     end
 
-    test "converts LazyTaskEither.Left with exception to {:error, exception}" do
+    test "raises the reason from LazyTaskEither.Left" do
       exception = %RuntimeError{message: "something went wrong"}
       lazy_error = LazyTaskEither.left(exception)
-      assert LazyTaskEither.to_try(lazy_error) == {:error, exception}
-    end
 
-    test "converts LazyTaskEither.Left with non-exception reason to {:error, reason}" do
-      reason = "something went wrong"
-      lazy_error = LazyTaskEither.left(reason)
-      assert LazyTaskEither.to_try(lazy_error) == {:error, reason}
+      assert_raise RuntimeError, "something went wrong", fn ->
+        LazyTaskEither.to_try!(lazy_error)
+      end
     end
   end
 end

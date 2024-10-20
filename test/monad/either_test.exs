@@ -366,4 +366,58 @@ defmodule Monex.EitherTest do
       assert result == Either.left("Predicate failed")
     end
   end
+
+  describe "from_result/1" do
+    test "converts {:ok, value} to Either.Right" do
+      result = Either.from_result({:ok, 42})
+      assert result == Either.right(42)
+    end
+
+    test "converts {:error, reason} to Either.Left" do
+      result = Either.from_result({:error, "error"})
+      assert result == Either.left("error")
+    end
+  end
+
+  describe "to_result/1" do
+    test "converts Either.Right to {:ok, value}" do
+      result = Either.right(42)
+      assert Either.to_result(result) == {:ok, 42}
+    end
+
+    test "converts Either.Left to {:error, reason}" do
+      error = Either.left("error")
+      assert Either.to_result(error) == {:error, "error"}
+    end
+  end
+
+  describe "from_try/1" do
+    test "converts a successful function into Either.Right" do
+      result = Either.from_try(fn -> 42 end)
+
+      assert result == %Either.Right{value: 42}
+    end
+
+    test "converts a raised exception into Either.Left" do
+      result = Either.from_try(fn -> raise "error" end)
+
+      assert result == %Either.Left{value: %RuntimeError{message: "error"}}
+    end
+  end
+
+  describe "to_try!/1" do
+    test "returns value from Either.Right" do
+      right_result = %Either.Right{value: 42}
+
+      assert Either.to_try!(right_result) == 42
+    end
+
+    test "raises RuntimeError for Either.Left" do
+      left_result = %Either.Left{value: "something went wrong"}
+
+      assert_raise RuntimeError, "something went wrong", fn ->
+        Either.to_try!(left_result)
+      end
+    end
+  end
 end

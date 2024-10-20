@@ -95,8 +95,45 @@ defmodule Monex.Either do
   def lift_predicate(value, predicate, on_false) do
     fold(
       fn -> predicate.(value) end,
-      fn -> Monex.Either.Right.pure(value) end,
-      fn -> Monex.Either.Left.pure(on_false.()) end
+      fn -> Right.pure(value) end,
+      fn -> Left.pure(on_false.()) end
     )
+  end
+
+  @spec from_result({:ok, right} | {:error, left}) :: t(left, right)
+        when left: term(), right: term()
+  def from_result({:ok, value}), do: Right.pure(value)
+  def from_result({:error, reason}), do: Left.pure(reason)
+
+  @spec to_result(t(left, right)) :: {:ok, right} | {:error, left}
+        when left: term(), right: term()
+  def to_result(either) do
+    case either do
+      %Right{value: value} -> {:ok, value}
+      %Left{value: reason} -> {:error, reason}
+    end
+  end
+
+  @spec from_try((-> right)) :: t(Exception.t(), right) when right: term()
+  def from_try(func) do
+    try do
+      result = func.()
+      Right.pure(result)
+    rescue
+      exception ->
+        Left.pure(exception)
+    end
+  end
+
+  @spec to_try!(t(left, right)) :: right | no_return
+        when left: term(), right: term()
+  def to_try!(either) do
+    case either do
+      %Right{value: value} ->
+        value
+
+      %Left{value: reason} ->
+        raise reason
+    end
   end
 end

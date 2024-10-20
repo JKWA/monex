@@ -94,13 +94,12 @@ defmodule LazyTaskEither do
     end
   end
 
-  @spec to_try(t(left, right)) :: {:ok, right} | {:error, Exception.t()}
-        when left: Exception.t(), right: term()
-  def to_try(lazy_task_either) do
+  @spec to_try!(t(left, right)) :: right | no_return
+        when left: term(), right: term()
+  def to_try!(lazy_task_either) do
     case run(lazy_task_either) do
-      %Either.Right{value: value} -> {:ok, value}
-      %Either.Left{value: %_exception{} = e} -> {:error, e}
-      %Either.Left{value: reason} -> {:error, reason}
+      %Either.Right{value: value} -> value
+      %Either.Left{value: reason} -> raise reason
     end
   end
 end

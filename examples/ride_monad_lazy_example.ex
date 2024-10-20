@@ -14,15 +14,25 @@ defmodule Examples.RideLazyTaskMonad do
   @spec check_valid_height(task_either_t()) :: task_either_t()
   def check_valid_height(patron) do
     patron
-    |> LazyTaskEither.lift_predicate(&Patron.valid_height?/1, fn ->
-      "Patron's height is not valid"
-    end)
+    |> LazyTaskEither.lift_predicate(
+      fn p ->
+        :timer.sleep(2000)
+        Patron.valid_height?(p)
+      end,
+      fn -> "Patron's height is not valid" end
+    )
   end
 
   @spec check_ticket_availability(task_either_t()) :: task_either_t()
   def check_ticket_availability(patron) do
     patron
-    |> LazyTaskEither.lift_predicate(&Patron.has_ticket?/1, fn -> "Patron is out of tickets" end)
+    |> LazyTaskEither.lift_predicate(
+      fn p ->
+        :timer.sleep(2000)
+        Patron.has_ticket?(p)
+      end,
+      fn -> "Patron is out of tickets" end
+    )
   end
 
   @spec take_ride(task_either_t()) :: task_either_t()
