@@ -1,4 +1,4 @@
-defmodule LazyTaskEither.Right do
+defmodule Monex.LazyTaskEither.Right do
   @enforce_keys [:task]
   defstruct [:task]
 
@@ -12,7 +12,7 @@ defmodule LazyTaskEither.Right do
   end
 
   defimpl Monex.Monad do
-    alias LazyTaskEither.{Right, Left}
+    alias Monex.LazyTaskEither.{Right, Left}
     alias Monex.Either
 
     @spec ap(Right.t((right -> result)), LazyTaskEither.t(left, right)) ::
@@ -72,7 +72,7 @@ defmodule LazyTaskEither.Right do
   end
 
   defimpl String.Chars do
-    alias LazyTaskEither.Right
+    alias Monex.LazyTaskEither.Right
 
     def to_string(%Right{task: task}) do
       "Right(#{Task.await(task.())})"

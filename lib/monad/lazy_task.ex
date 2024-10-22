@@ -1,4 +1,4 @@
-defmodule LazyTask do
+defmodule Monex.LazyTask do
   defstruct [:func]
 
   @type t(value) :: %__MODULE__{func: (-> Task.t(value))}
@@ -14,6 +14,8 @@ defmodule LazyTask do
   end
 
   defimpl Monex.Monad do
+    alias Monex.LazyTask
+
     @spec ap(LazyTask.t((value -> result)), LazyTask.t(value)) :: LazyTask.t(result)
           when value: term(), result: term()
     def ap(%LazyTask{func: func_task}, %LazyTask{func: value_task}) do

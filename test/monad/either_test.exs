@@ -2,32 +2,39 @@ defmodule Monex.EitherTest do
   use ExUnit.Case, async: true
   import Monex.Monad, only: [ap: 2, bind: 2, map: 2]
   import Monex.Foldable, only: [fold: 3]
+  import Monex.Either
 
-  alias Monex.{Either, Maybe, Eq, Ord}
-  alias Either.{Left, Right}
+  alias Monex.{Maybe, Eq, Ord}
+  alias Monex.Either.{Left, Right}
 
-  describe "Right.pure/1" do
-    test "wraps a non-error value in a Right monad" do
-      assert %Right{value: 42} = Either.right(42)
+  describe "pure/1" do
+    test "wraps a value in a Right monad" do
+      assert %Right{value: 42} = pure(42)
     end
   end
 
-  describe "Left.pure/1" do
+  describe "right/1" do
+    test "wraps a value in a Right monad" do
+      assert %Right{value: 42} = right(42)
+    end
+  end
+
+  describe "left/1" do
     test "wraps an error value in a Left monad" do
-      assert %Left{value: "error"} = Either.left("error")
+      assert %Left{value: "error"} = left("error")
     end
   end
 
   describe "map/2" do
     test "applies a function to the value inside a Right monad" do
       assert %Right{value: 43} =
-               Either.right(42)
+               right(42)
                |> map(&(&1 + 1))
     end
 
     test "returns Left when mapping over a Left monad" do
       assert %Left{} =
-               Either.left("error")
+               left("error")
                |> map(&(&1 + 1))
     end
   end
@@ -35,45 +42,45 @@ defmodule Monex.EitherTest do
   describe "bind/2" do
     test "applies a function returning a monad to the value inside a Right monad" do
       assert %Right{value: 21} =
-               Either.right(42)
-               |> bind(fn x -> Either.right(div(x, 2)) end)
+               right(42)
+               |> bind(fn x -> right(div(x, 2)) end)
     end
 
     test "returns Left when binding over a Left monad" do
       assert %Left{value: "error"} =
-               Either.left("error")
-               |> bind(fn _ -> Either.right(10) end)
+               left("error")
+               |> bind(fn _ -> right(10) end)
     end
 
     test "returns Left when the function returns Left" do
       assert %Left{value: "error"} =
-               Either.right(42)
-               |> bind(fn _ -> Either.left("error") end)
+               right(42)
+               |> bind(fn _ -> left("error") end)
     end
   end
 
   describe "ap/2" do
     test "applies a function in Right to a value in Right" do
-      assert ap(Either.right(&(&1 + 1)), Either.right(42)) == Either.right(43)
+      assert ap(right(&(&1 + 1)), right(42)) == right(43)
     end
 
     test "returns Left if the function is in Left" do
-      assert ap(Either.left("error"), Either.right(42)) == Either.left("error")
+      assert ap(left("error"), right(42)) == left("error")
     end
 
     test "returns Left if the value is in Left" do
-      assert ap(Either.right(&(&1 + 1)), Either.left("error")) == Either.left("error")
+      assert ap(right(&(&1 + 1)), left("error")) == left("error")
     end
 
     test "returns Left if both are Left" do
-      assert ap(Either.left("error"), Either.left("error")) == Either.left("error")
+      assert ap(left("error"), left("error")) == left("error")
     end
   end
 
   describe "fold/3" do
     test "applies the right_func to a Right value" do
       result =
-        Either.right(42)
+        right(42)
         |> fold(fn x -> "Right #{x}" end, fn -> "Left" end)
 
       assert result == "Right 42"
@@ -81,7 +88,7 @@ defmodule Monex.EitherTest do
 
     test "applies the left_func to a Left value" do
       result =
-        Either.left("error")
+        left("error")
         |> fold(fn x -> "Right #{x}" end, fn value -> "Left: #{value}" end)
 
       assert result == "Left: error"
@@ -90,238 +97,238 @@ defmodule Monex.EitherTest do
 
   describe "right?/1" do
     test "returns true for Right values" do
-      assert Either.right?(Either.right(42)) == true
+      assert right?(right(42)) == true
     end
 
     test "returns false for Left values" do
-      assert Either.right?(Either.left("error")) == false
+      assert right?(left("error")) == false
     end
   end
 
   describe "left?/1" do
     test "returns true for Left values" do
-      assert Either.left?(Either.left("error")) == true
+      assert left?(left("error")) == true
     end
 
     test "returns false for Right values" do
-      assert Either.left?(Either.right(42)) == false
+      assert left?(right(42)) == false
     end
   end
 
   describe "String.Chars" do
     test "Right value string representation" do
-      right_value = Either.right(42)
+      right_value = right(42)
       assert to_string(right_value) == "Right(42)"
     end
 
     test "Left value string representation" do
-      left_value = Either.left("error")
+      left_value = left("error")
       assert to_string(left_value) == "Left(error)"
     end
   end
 
   describe "filter_or_else/3" do
     test "returns Right value when predicate is true" do
-      either_value = Either.right(1)
-      assert Either.filter_or_else(either_value, &(&1 > 0), fn -> "error" end) == either_value
+      either_value = right(1)
+      assert filter_or_else(either_value, &(&1 > 0), fn -> "error" end) == either_value
     end
 
     test "returns Left value when predicate is false" do
-      either_value = Either.right(-1)
+      either_value = right(-1)
 
-      assert Either.filter_or_else(either_value, &(&1 > 0), fn -> "error" end) ==
-               Either.left("error")
+      assert filter_or_else(either_value, &(&1 > 0), fn -> "error" end) ==
+               left("error")
     end
 
     test "returns Left unchanged when already a Left" do
-      left_value = Either.left("existing error")
+      left_value = left("existing error")
 
-      assert Either.filter_or_else(left_value, fn _ -> true end, fn -> "new error" end) ==
+      assert filter_or_else(left_value, fn _ -> true end, fn -> "new error" end) ==
                left_value
     end
   end
 
   describe "get_or_else/2" do
     test "returns the value in Right when present" do
-      assert Monex.Either.get_or_else(Either.right(42), 0) == 42
+      assert get_or_else(right(42), 0) == 42
     end
 
     test "returns the default value when Left" do
-      assert Monex.Either.get_or_else(Either.left("error"), 0) == 0
+      assert get_or_else(left("error"), 0) == 0
     end
   end
 
   describe "traverse/2" do
     test "applies a function and sequences the results" do
-      result = Either.traverse(&Either.right/1, [1, 2, 3])
-      assert result == Either.right([1, 2, 3])
+      result = traverse(&right/1, [1, 2, 3])
+      assert result == right([1, 2, 3])
     end
 
     test "returns Left if the function returns Left for any element" do
       result =
-        Either.traverse(
+        traverse(
           fn x ->
             if x > 1,
-              do: Either.left("error"),
-              else: Either.right(x)
+              do: left("error"),
+              else: right(x)
           end,
           [1, 2, 3]
         )
 
-      assert result == Either.left("error")
+      assert result == left("error")
     end
   end
 
   describe "sequence/1" do
     test "sequences a list of Right values" do
-      result = Either.sequence([Either.right(1), Either.right(2), Either.right(3)])
-      assert result == Either.right([1, 2, 3])
+      result = sequence([right(1), right(2), right(3)])
+      assert result == right([1, 2, 3])
     end
 
     test "returns Left if any value is Left" do
-      result = Either.sequence([Either.right(1), Either.left("error"), Either.right(3)])
-      assert result == Either.left("error")
+      result = sequence([right(1), left("error"), right(3)])
+      assert result == left("error")
     end
   end
 
   describe "Eq.equals?/2" do
     test "returns true for equal Right values" do
-      assert Eq.equals?(Either.right(1), Either.right(1)) == true
+      assert Eq.equals?(right(1), right(1)) == true
     end
 
     test "returns false for different Right values" do
-      assert Eq.equals?(Either.right(1), Either.right(2)) == false
+      assert Eq.equals?(right(1), right(2)) == false
     end
 
     test "returns true for two Left values" do
-      assert Eq.equals?(Either.left(1), Either.left(1)) == true
+      assert Eq.equals?(left(1), left(1)) == true
     end
 
     test "returns false for Right and Left comparison" do
-      assert Eq.equals?(Either.right(1), Either.left(1)) == false
+      assert Eq.equals?(right(1), left(1)) == false
     end
 
     test "returns false for Left and Right comparison" do
-      assert Eq.equals?(Either.left(1), Either.right(1)) == false
+      assert Eq.equals?(left(1), right(1)) == false
     end
   end
 
   describe "get_eq/1" do
     setup do
       number_eq = %{equals?: &Kernel.==/2}
-      {:ok, eq: Either.get_eq(number_eq)}
+      {:ok, eq: get_eq(number_eq)}
     end
 
     test "returns true for equal Right values", %{eq: eq} do
-      assert eq.equals?.(Either.right(1), Either.right(1)) == true
+      assert eq.equals?.(right(1), right(1)) == true
     end
 
     test "returns false for different Right values", %{eq: eq} do
-      assert eq.equals?.(Either.right(1), Either.right(2)) == false
+      assert eq.equals?.(right(1), right(2)) == false
     end
 
     test "returns true for two Left values", %{eq: eq} do
-      assert eq.equals?.(Either.left(1), Either.left(1)) == true
+      assert eq.equals?.(left(1), left(1)) == true
     end
 
     test "returns false for Right and Left comparison", %{eq: eq} do
-      assert eq.equals?.(Either.right(1), Either.left(1)) == false
+      assert eq.equals?.(right(1), left(1)) == false
     end
 
     test "returns false for Left and Right comparison", %{eq: eq} do
-      assert eq.equals?.(Either.left(1), Either.right(1)) == false
+      assert eq.equals?.(left(1), right(1)) == false
     end
   end
 
   describe "Ord.le?/2" do
     test "returns true when Right value is less than or equal to another Right value" do
-      assert Ord.le?(Either.right(1), Either.right(2)) == true
-      assert Ord.le?(Either.right(2), Either.right(2)) == true
+      assert Ord.le?(right(1), right(2)) == true
+      assert Ord.le?(right(2), right(2)) == true
     end
 
     test "returns false when Right value is greater than another Right value" do
-      assert Ord.le?(Either.right(2), Either.right(1)) == false
+      assert Ord.le?(right(2), right(1)) == false
     end
 
     test "returns true for Left compared to Right" do
-      assert Ord.le?(Either.left(100), Either.right(1)) == true
+      assert Ord.le?(left(100), right(1)) == true
     end
 
     test "returns true for Left compared to Left" do
-      assert Ord.le?(Either.left(1), Either.left(2)) == true
+      assert Ord.le?(left(1), left(2)) == true
     end
 
     test "returns false for Right compared to Left" do
-      assert Ord.le?(Either.right(1), Either.left(100)) == false
+      assert Ord.le?(right(1), left(100)) == false
     end
   end
 
   describe "Ord.gt?/2" do
     test "returns true when Right value is greater than another Right value" do
-      assert Ord.gt?(Either.right(2), Either.right(1)) == true
+      assert Ord.gt?(right(2), right(1)) == true
     end
 
     test "returns false when Right value is less than or equal to another Right value" do
-      assert Ord.gt?(Either.right(1), Either.right(2)) == false
-      assert Ord.gt?(Either.right(2), Either.right(2)) == false
+      assert Ord.gt?(right(1), right(2)) == false
+      assert Ord.gt?(right(2), right(2)) == false
     end
 
     test "returns false for Left compared to Right" do
-      assert Ord.gt?(Either.left(100), Either.right(1)) == false
+      assert Ord.gt?(left(100), right(1)) == false
     end
 
     test "returns true for Right compared to Left" do
-      assert Ord.gt?(Either.right(1), Either.left(100)) == true
+      assert Ord.gt?(right(1), left(100)) == true
     end
   end
 
   describe "Ord.ge?/2" do
     test "returns true when Right value is greater than or equal to another Right value" do
-      assert Ord.ge?(Either.right(2), Either.right(1)) == true
-      assert Ord.ge?(Either.right(2), Either.right(2)) == true
+      assert Ord.ge?(right(2), right(1)) == true
+      assert Ord.ge?(right(2), right(2)) == true
     end
 
     test "returns false when Right value is less than another Right value" do
-      assert Ord.ge?(Either.right(1), Either.right(2)) == false
+      assert Ord.ge?(right(1), right(2)) == false
     end
 
     test "returns true for Right compared to Left" do
-      assert Ord.ge?(Either.right(1), Either.left(1)) == true
+      assert Ord.ge?(right(1), left(1)) == true
     end
 
     test "returns true for Left compared to Left" do
-      assert Ord.ge?(Either.left(1), Either.left(1)) == true
+      assert Ord.ge?(left(1), left(1)) == true
     end
 
     test "returns false for Left compared to Right" do
-      assert Ord.ge?(Either.left(1), Either.right(1)) == false
+      assert Ord.ge?(left(1), right(1)) == false
     end
   end
 
   describe "get_ord/1" do
     setup do
       number_ord = %{lt?: &Kernel.</2}
-      {:ok, ord: Either.get_ord(number_ord)}
+      {:ok, ord: get_ord(number_ord)}
     end
 
     test "Left is less than any Right", %{ord: ord} do
-      assert ord[:lt?].(Either.left(100), Either.right(1)) == true
+      assert ord[:lt?].(left(100), right(1)) == true
     end
 
     test "Right is greater than Left", %{ord: ord} do
-      assert ord[:gt?].(Either.right(1), Either.left(100)) == true
+      assert ord[:gt?].(right(1), left(100)) == true
     end
 
     test "Orders Right values based on their contained values", %{ord: ord} do
-      assert ord[:lt?].(Either.right(42), Either.right(43)) == true
-      assert ord[:gt?].(Either.right(43), Either.right(42)) == true
-      assert ord[:le?].(Either.right(42), Either.right(42)) == true
-      assert ord[:ge?].(Either.right(42), Either.right(42)) == true
+      assert ord[:lt?].(right(42), right(43)) == true
+      assert ord[:gt?].(right(43), right(42)) == true
+      assert ord[:le?].(right(42), right(42)) == true
+      assert ord[:ge?].(right(42), right(42)) == true
     end
 
     test "Left is equal to Left in terms of ordering", %{ord: ord} do
-      assert ord[:le?].(Either.left(1), Either.left(1)) == true
-      assert ord[:ge?].(Either.left(1), Either.left(1)) == true
+      assert ord[:le?].(left(1), left(1)) == true
+      assert ord[:ge?].(left(1), left(1)) == true
     end
   end
 
@@ -329,17 +336,17 @@ defmodule Monex.EitherTest do
     test "returns Right when the function returns Just" do
       result =
         Maybe.just(5)
-        |> Either.lift_option(fn -> "Missing value" end)
+        |> lift_option(fn -> "Missing value" end)
 
-      assert result == Either.right(5)
+      assert result == right(5)
     end
 
     test "returns Left when the function returns Nothing" do
       result =
         Maybe.nothing()
-        |> Either.lift_option(fn -> "Missing value" end)
+        |> lift_option(fn -> "Missing value" end)
 
-      assert result == Either.left("Missing value")
+      assert result == left("Missing value")
     end
   end
 
@@ -350,9 +357,9 @@ defmodule Monex.EitherTest do
 
       result =
         5
-        |> Either.lift_predicate(pred, false_func)
+        |> lift_predicate(pred, false_func)
 
-      assert result == Either.right(5)
+      assert result == right(5)
     end
 
     test "returns Left when the predicate is false" do
@@ -361,62 +368,62 @@ defmodule Monex.EitherTest do
 
       result =
         0
-        |> Either.lift_predicate(pred, false_func)
+        |> lift_predicate(pred, false_func)
 
-      assert result == Either.left("Predicate failed")
+      assert result == left("Predicate failed")
     end
   end
 
   describe "from_result/1" do
-    test "converts {:ok, value} to Either.Right" do
-      result = Either.from_result({:ok, 42})
-      assert result == Either.right(42)
+    test "converts {:ok, value} to Right" do
+      result = from_result({:ok, 42})
+      assert result == right(42)
     end
 
-    test "converts {:error, reason} to Either.Left" do
-      result = Either.from_result({:error, "error"})
-      assert result == Either.left("error")
+    test "converts {:error, reason} to Left" do
+      result = from_result({:error, "error"})
+      assert result == left("error")
     end
   end
 
   describe "to_result/1" do
-    test "converts Either.Right to {:ok, value}" do
-      result = Either.right(42)
-      assert Either.to_result(result) == {:ok, 42}
+    test "converts Right to {:ok, value}" do
+      result = right(42)
+      assert to_result(result) == {:ok, 42}
     end
 
-    test "converts Either.Left to {:error, reason}" do
-      error = Either.left("error")
-      assert Either.to_result(error) == {:error, "error"}
+    test "converts Left to {:error, reason}" do
+      error = left("error")
+      assert to_result(error) == {:error, "error"}
     end
   end
 
   describe "from_try/1" do
-    test "converts a successful function into Either.Right" do
-      result = Either.from_try(fn -> 42 end)
+    test "converts a successful function into Right" do
+      result = from_try(fn -> 42 end)
 
-      assert result == %Either.Right{value: 42}
+      assert result == %Right{value: 42}
     end
 
-    test "converts a raised exception into Either.Left" do
-      result = Either.from_try(fn -> raise "error" end)
+    test "converts a raised exception into Left" do
+      result = from_try(fn -> raise "error" end)
 
-      assert result == %Either.Left{value: %RuntimeError{message: "error"}}
+      assert result == %Left{value: %RuntimeError{message: "error"}}
     end
   end
 
   describe "to_try!/1" do
-    test "returns value from Either.Right" do
-      right_result = %Either.Right{value: 42}
+    test "returns value from Right" do
+      right_result = %Right{value: 42}
 
-      assert Either.to_try!(right_result) == 42
+      assert to_try!(right_result) == 42
     end
 
-    test "raises RuntimeError for Either.Left" do
-      left_result = %Either.Left{value: "something went wrong"}
+    test "raises RuntimeError for Left" do
+      left_result = %Left{value: "something went wrong"}
 
       assert_raise RuntimeError, "something went wrong", fn ->
-        Either.to_try!(left_result)
+        to_try!(left_result)
       end
     end
   end

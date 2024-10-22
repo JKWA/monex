@@ -1,4 +1,4 @@
-defmodule LazyTaskEither.Left do
+defmodule Monex.LazyTaskEither.Left do
   @enforce_keys [:task]
   defstruct [:task]
 
@@ -12,7 +12,7 @@ defmodule LazyTaskEither.Left do
   end
 
   defimpl Monex.Monad do
-    alias LazyTaskEither.Left
+    alias Monex.LazyTaskEither.Left
 
     @spec bind(Left.t(left), (any() -> LazyTaskEither.t(left, result))) :: Left.t(left)
           when left: term(), result: term()
@@ -37,7 +37,7 @@ defmodule LazyTaskEither.Left do
   end
 
   defimpl String.Chars do
-    alias LazyTaskEither.Left
+    alias Monex.LazyTaskEither.Left
 
     def to_string(%Left{task: task}) do
       "Left(#{Task.await(task.())})"

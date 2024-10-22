@@ -1,5 +1,5 @@
-defmodule LazyTaskEither do
-  alias LazyTaskEither.{Right, Left}
+defmodule Monex.LazyTaskEither do
+  alias Monex.LazyTaskEither.{Right, Left}
   alias Monex.Either
   import Monex.Monad, only: [ap: 2, map: 2]
   import Monex.Foldable, only: [fold: 3]

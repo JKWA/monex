@@ -1,7 +1,7 @@
 defmodule Examples.RideLazyTaskMonad do
   import Monex.Monad, only: [ap: 2, bind: 2, map: 2]
 
-  alias LazyTaskEither
+  alias Monex.LazyTaskEither
   alias Examples.Patron
 
   @type task_either_t :: LazyTaskEither.t(String.t(), Patron.t())

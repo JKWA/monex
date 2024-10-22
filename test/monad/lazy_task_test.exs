@@ -1,6 +1,6 @@
 defmodule LazyTaskTest do
   use ExUnit.Case, async: true
-  alias LazyTask
+  alias Monex.LazyTask
   import Monex.Monad, only: [map: 2, bind: 2, ap: 2]
 
   describe "pure/1" do
