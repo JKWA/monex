@@ -168,9 +168,7 @@ defmodule Monex.EitherTest do
       result =
         traverse(
           fn x ->
-            if x > 1,
-              do: left("error"),
-              else: right(x)
+            lift_predicate(x, &(&1 <= 1), fn -> "error" end)
           end,
           [1, 2, 3]
         )
@@ -188,6 +186,93 @@ defmodule Monex.EitherTest do
     test "returns Left if any value is Left" do
       result = sequence([right(1), left("error"), right(3)])
       assert result == left("error")
+    end
+  end
+
+  describe "sequence_a/1" do
+    test "returns Right([]) for an empty list" do
+      assert sequence_a([]) == right([])
+    end
+
+    test "returns Right when all elements are Right" do
+      assert sequence_a([right(1), right(2), right(3)]) ==
+               right([1, 2, 3])
+    end
+
+    test "returns Left with a non-empty list of errors when encountering Lefts" do
+      assert sequence_a([right(1), left("Error 1"), right(2), left("Error 2")]) ==
+               left(["Error 1", "Error 2"])
+    end
+
+    test "returns Left even when followed by a Right" do
+      assert sequence_a([left("Error 1"), left("Error 2"), right(3)]) ==
+               left(["Error 1", "Error 2"])
+    end
+
+    test "returns Left if all elements are Left, collecting all errors" do
+      assert sequence_a([left("Error 1"), left("Error 2"), left("Error 3")]) ==
+               left(["Error 1", "Error 2", "Error 3"])
+    end
+
+    test "returns Right when all elements are Right, including complex values" do
+      assert sequence_a([right(1), right(2), right([])]) ==
+               right([1, 2, []])
+    end
+  end
+
+  describe "validate/2" do
+    def positive?(x), do: x > 0
+    def even?(x), do: rem(x, 2) == 0
+
+    def validate_positive(x) do
+      x |> lift_predicate(&positive?/1, fn -> "Value must be positive" end)
+    end
+
+    def validate_even(x) do
+      x |> lift_predicate(&even?/1, fn -> "Value must be even" end)
+    end
+
+    test "returns Right for a single validation when it passes" do
+      assert validate(5, &validate_positive/1) == right(5)
+    end
+
+    test "returns Left for a single validation when it fails" do
+      assert validate(-5, &validate_positive/1) == left(["Value must be positive"])
+    end
+
+    test "returns Left for a single validation with a different condition" do
+      assert validate(3, &validate_even/1) == left(["Value must be even"])
+    end
+
+    test "returns Right for a single validation with a different condition" do
+      assert validate(2, &validate_even/1) == right(2)
+    end
+
+    test "returns Right when all validators pass" do
+      validators = [&validate_positive/1, &validate_even/1]
+      assert validate(4, validators) == right(4)
+    end
+
+    test "returns Left with a single error when one validator fails" do
+      validators = [&validate_positive/1, &validate_even/1]
+      assert validate(3, validators) == left(["Value must be even"])
+    end
+
+    test "returns Left with multiple errors when multiple validators fail" do
+      validators = [&validate_positive/1, &validate_even/1]
+
+      assert validate(-3, validators) ==
+               left(["Value must be positive", "Value must be even"])
+    end
+
+    test "returns Right when all validators pass with different value" do
+      validators = [&validate_positive/1]
+      assert validate(1, validators) == right(1)
+    end
+
+    test "returns Left when all validators fail" do
+      validators = [&validate_positive/1, &validate_even/1]
+      assert validate(-2, validators) == left(["Value must be positive"])
     end
   end
 

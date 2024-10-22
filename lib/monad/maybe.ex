@@ -73,23 +73,23 @@ defmodule Monex.Maybe do
 
   def lift_either(either) do
     case either do
-      %Right{value: value} -> Just.pure(value)
-      %Left{} -> Nothing.pure()
+      %Right{value: value} -> just(value)
+      %Left{} -> nothing()
     end
   end
 
   def lift_predicate(value, predicate) do
     Monex.Foldable.fold(
       fn -> predicate.(value) end,
-      fn -> Just.pure(value) end,
-      fn -> Nothing.pure() end
+      fn -> just(value) end,
+      fn -> nothing() end
     )
   end
 
   @spec from_nil(nil | value) :: t(value)
         when value: term()
-  def from_nil(nil), do: Nothing.pure()
-  def from_nil(value), do: Just.pure(value)
+  def from_nil(nil), do: nothing()
+  def from_nil(value), do: just(value)
 
   @spec to_nil(t(value)) :: nil | value
         when value: term()
@@ -101,10 +101,10 @@ defmodule Monex.Maybe do
   def from_try(func) do
     try do
       result = func.()
-      Just.pure(result)
+      just(result)
     rescue
       _exception ->
-        Nothing.pure()
+        nothing()
     end
   end
 
@@ -117,8 +117,8 @@ defmodule Monex.Maybe do
   end
 
   @spec from_result({:ok, right} | {:error, term()}) :: t(right) when right: term()
-  def from_result({:ok, value}), do: Just.pure(value)
-  def from_result({:error, _reason}), do: Nothing.pure()
+  def from_result({:ok, value}), do: just(value)
+  def from_result({:error, _reason}), do: nothing()
 
   @spec to_result(t(right)) :: {:ok, right} | {:error, :nothing} when right: term()
   def to_result(maybe) do

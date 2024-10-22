@@ -68,6 +68,7 @@ defmodule Monex.Either do
     }
   end
 
+  @spec sequence([t(error, value)]) :: t(error, [value]) when error: term(), value: term()
   def sequence([]), do: right([])
 
   def sequence([head | tail]) do
@@ -78,10 +79,52 @@ defmodule Monex.Either do
     end)
   end
 
+  @spec traverse((a -> t(error, b)), [a]) :: t(error, [b])
+        when error: term(), a: term(), b: term()
   def traverse(func, list) do
     list
     |> Enum.map(func)
     |> sequence()
+  end
+
+  @spec sequence_a([t(error, value)]) :: t([error], [value])
+        when error: term(), value: term()
+  def sequence_a([]), do: right([])
+
+  def sequence_a([head | tail]) do
+    case head do
+      %Right{value: value} ->
+        sequence_a(tail)
+        |> case do
+          %Right{value: values} -> right([value | values])
+          %Left{value: errors} -> left(errors)
+        end
+
+      %Left{value: error} ->
+        sequence_a(tail)
+        |> case do
+          %Right{value: _values} -> left([error])
+          %Left{value: errors} -> left([error | errors])
+        end
+    end
+  end
+
+  @spec validate(value, [(value -> t(error, any))]) :: t([error], value)
+        when error: term(), value: term()
+  def validate(value, validators) when is_list(validators) do
+    results = Enum.map(validators, fn validator -> validator.(value) end)
+
+    case sequence_a(results) do
+      %Right{} -> right(value)
+      %Left{value: errors} -> left(errors)
+    end
+  end
+
+  def validate(value, validator) when is_function(validator, 1) do
+    case validator.(value) do
+      %Right{} -> right(value)
+      %Left{value: error} -> left([error])
+    end
   end
 
   def lift_option(maybe, on_none) do
