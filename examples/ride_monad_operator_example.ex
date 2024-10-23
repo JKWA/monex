@@ -1,5 +1,5 @@
 defmodule Examples.RideMonadOperator do
-  import Monex.Operators, only: [~>: 2, >>>: 2, <<~: 2]
+  import Monex.Operators, only: [~>: 2, ~>>: 2, <<~: 2]
 
   alias Monex.Either
   alias Examples.Patron
@@ -25,9 +25,9 @@ defmodule Examples.RideMonadOperator do
 
   @spec take_ride(either_t()) :: either_t()
   def take_ride(patron) do
-    patron >>>
-      (&check_valid_height/1) >>>
-      (&check_ticket_availability/1)
+    patron
+    ~>> (&check_valid_height/1)
+    ~>> (&check_ticket_availability/1)
     ~> (&Patron.decrement_ticket/1)
   end
 
