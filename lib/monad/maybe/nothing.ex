@@ -26,7 +26,11 @@ defmodule Monex.Maybe.Nothing do
   defimpl Monex.Foldable do
     alias Monex.Maybe.Nothing
 
-    def fold(%Nothing{}, _just_func, nothing_func) do
+    def fold_l(%Nothing{}, _just_func, nothing_func) do
+      nothing_func.()
+    end
+
+    def fold_r(%Nothing{}, _just_func, nothing_func) do
       nothing_func.()
     end
   end

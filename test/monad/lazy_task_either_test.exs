@@ -4,7 +4,7 @@ defmodule LazyTaskEitherTest do
   alias Monex.{Either, Maybe}
 
   import Monex.Monad, only: [ap: 2, bind: 2, map: 2]
-  import Monex.Foldable, only: [fold: 3]
+  import Monex.Foldable, only: [fold_r: 3]
 
   describe "ap/2" do
     test "ap applies a function inside a Right monad to a value inside another Right monad" do
@@ -186,14 +186,14 @@ defmodule LazyTaskEitherTest do
     end
   end
 
-  describe "fold/3 with results of LazyTaskEither" do
+  describe "fold_r/3 with results of LazyTaskEither" do
     test "applies right function for a Right value returned by a task" do
       right_value = right(42)
 
       result =
         right_value
         |> run()
-        |> fold(
+        |> fold_r(
           fn value -> "Right value is: #{value}" end,
           fn _error -> "This should not be called" end
         )
@@ -207,7 +207,7 @@ defmodule LazyTaskEitherTest do
       result =
         left_value
         |> run()
-        |> fold(
+        |> fold_r(
           fn _value -> "This should not be called" end,
           fn error -> "Error: #{error}" end
         )

@@ -35,7 +35,11 @@ defmodule Monex.Either.Right do
   defimpl Monex.Foldable do
     alias Monex.Either.{Right}
 
-    def fold(%Right{value: value}, right_func, _left_func) do
+    def fold_l(%Right{value: value}, right_func, _left_func) do
+      right_func.(value)
+    end
+
+    def fold_r(%Right{value: value}, right_func, _left_func) do
       right_func.(value)
     end
   end

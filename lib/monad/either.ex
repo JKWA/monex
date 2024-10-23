@@ -1,6 +1,6 @@
 defmodule Monex.Either do
   import Monex.Monad, only: [bind: 2]
-  import Monex.Foldable, only: [fold: 3]
+  import Monex.Foldable, only: [fold_r: 3]
   alias Monex.Either.{Left, Right}
 
   @type t(left, right) :: Left.t(left) | Right.t(right)
@@ -17,7 +17,7 @@ defmodule Monex.Either do
   def right?(_), do: false
 
   def filter_or_else(either, predicate, error_func) do
-    fold(
+    fold_r(
       either,
       fn value ->
         if predicate.(value) do
@@ -31,7 +31,7 @@ defmodule Monex.Either do
   end
 
   def get_or_else(either, default) do
-    fold(
+    fold_r(
       either,
       fn value -> value end,
       fn _left_value -> default end
@@ -129,14 +129,14 @@ defmodule Monex.Either do
 
   def lift_option(maybe, on_none) do
     maybe
-    |> fold(
+    |> fold_r(
       fn value -> Right.pure(value) end,
       fn -> Left.pure(on_none.()) end
     )
   end
 
   def lift_predicate(value, predicate, on_false) do
-    fold(
+    fold_r(
       fn -> predicate.(value) end,
       fn -> Right.pure(value) end,
       fn -> Left.pure(on_false.()) end

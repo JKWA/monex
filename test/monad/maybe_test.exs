@@ -1,7 +1,7 @@
 defmodule Monex.MaybeTest do
   use ExUnit.Case, async: true
   import Monex.Monad, only: [ap: 2, bind: 2, map: 2]
-  import Monex.Foldable, only: [fold: 3]
+  import Monex.Foldable, only: [fold_r: 3]
   import Monex.Maybe
 
   alias Monex.{Either, Eq, Ord}
@@ -89,11 +89,11 @@ defmodule Monex.MaybeTest do
     end
   end
 
-  describe "fold/3" do
+  describe "fold_r/3" do
     test "applies the just_func to a Just value" do
       result =
         just(42)
-        |> fold(fn x -> "Just #{x}" end, fn -> "Nothing" end)
+        |> fold_r(fn x -> "Just #{x}" end, fn -> "Nothing" end)
 
       assert result == "Just 42"
     end
@@ -101,7 +101,7 @@ defmodule Monex.MaybeTest do
     test "applies the nothing_func to a Nothing value" do
       result =
         nothing()
-        |> fold(fn x -> "Just #{x}" end, fn -> "Nothing" end)
+        |> fold_r(fn x -> "Just #{x}" end, fn -> "Nothing" end)
 
       assert result == "Nothing"
     end

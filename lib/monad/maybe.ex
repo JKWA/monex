@@ -1,6 +1,6 @@
 defmodule Monex.Maybe do
   import Monex.Monad, only: [bind: 2]
-  import Monex.Foldable, only: [fold: 3]
+  import Monex.Foldable, only: [fold_r: 3]
   alias Monex.Maybe.{Just, Nothing}
   alias Monex.Either.{Right, Left}
 
@@ -28,7 +28,7 @@ defmodule Monex.Maybe do
   def nothing?(_), do: false
 
   def get_or_else(maybe, default) do
-    fold(maybe, fn value -> value end, fn -> default end)
+    fold_r(maybe, fn value -> value end, fn -> default end)
   end
 
   def get_eq(custom_eq) do
@@ -79,7 +79,7 @@ defmodule Monex.Maybe do
   end
 
   def lift_predicate(value, predicate) do
-    Monex.Foldable.fold(
+    Monex.Foldable.fold_r(
       fn -> predicate.(value) end,
       fn -> just(value) end,
       fn -> nothing() end
@@ -94,7 +94,7 @@ defmodule Monex.Maybe do
   @spec to_nil(t(value)) :: nil | value
         when value: term()
   def to_nil(maybe) do
-    fold(maybe, fn value -> value end, fn -> nil end)
+    fold_r(maybe, fn value -> value end, fn -> nil end)
   end
 
   @spec from_try((-> right)) :: t(right) when right: term()

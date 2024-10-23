@@ -2,7 +2,7 @@ defmodule Monex.LazyTaskEither do
   alias Monex.LazyTaskEither.{Right, Left}
   alias Monex.Either
   import Monex.Monad, only: [ap: 2, map: 2]
-  import Monex.Foldable, only: [fold: 3]
+  import Monex.Foldable, only: [fold_r: 3]
 
   @type t(left, right) :: Left.t(left) | Right.t(right)
 
@@ -43,7 +43,7 @@ defmodule Monex.LazyTaskEither do
 
   def lift_option(maybe, on_none) do
     maybe
-    |> fold(
+    |> fold_r(
       fn value -> Right.pure(value) end,
       fn -> Left.pure(on_none.()) end
     )

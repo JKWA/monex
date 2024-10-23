@@ -37,9 +37,15 @@ defmodule Monex.Maybe.Just do
   defimpl Monex.Foldable do
     alias Monex.Maybe.Just
 
-    @spec fold(Just.t(value), (value -> result), (-> result)) :: result
+    @spec fold_l(Just.t(value), (value -> result), (-> result)) :: result
           when value: term(), result: term()
-    def fold(%Just{value: value}, just_func, _nothing_func) do
+    def fold_l(%Just{value: value}, just_func, _nothing_func) do
+      just_func.(value)
+    end
+
+    @spec fold_r(Just.t(value), (value -> result), (-> result)) :: result
+          when value: term(), result: term()
+    def fold_r(%Just{value: value}, just_func, _nothing_func) do
       just_func.(value)
     end
   end
