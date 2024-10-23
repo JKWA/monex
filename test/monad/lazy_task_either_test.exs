@@ -309,6 +309,125 @@ defmodule LazyTaskEitherTest do
     end
   end
 
+  describe "sequence_a/1" do
+    test "all Right values return a Right with all values" do
+      tasks = [
+        right(1),
+        right(2),
+        right(3)
+      ]
+
+      result =
+        sequence_a(tasks)
+        |> run()
+
+      assert result == Either.right([1, 2, 3])
+    end
+
+    test "multiple Left values accumulate and return a Left with all errors" do
+      tasks = [
+        right(1),
+        left("Error 1"),
+        left("Error 2"),
+        right(3)
+      ]
+
+      result =
+        sequence_a(tasks)
+        |> run()
+
+      assert result == Either.left(["Error 1", "Error 2"])
+    end
+
+    test "Right and Left values accumulate errors and return Left with all errors" do
+      tasks = [
+        left("Error 1"),
+        right(2),
+        left("Error 2")
+      ]
+
+      result =
+        sequence_a(tasks)
+        |> run()
+
+      assert result == Either.left(["Error 1", "Error 2"])
+    end
+
+    test "empty list returns a Right with an empty list" do
+      tasks = []
+
+      result =
+        sequence_a(tasks)
+        |> run()
+
+      assert result == Either.right([])
+    end
+  end
+
+  describe "validate/2" do
+    test "all validators pass, returns Right with the original value" do
+      validator_1 = fn value -> if value > 0, do: right(value), else: left("too small") end
+
+      validator_2 = fn value ->
+        if rem(value, 2) == 0, do: right(value), else: left("not even")
+      end
+
+      result =
+        validate(4, [validator_1, validator_2])
+        |> run()
+
+      assert result == Either.right(4)
+    end
+
+    test "one validator fails, returns Left with the error" do
+      validator_1 = fn value -> if value > 0, do: right(value), else: left("too small") end
+
+      validator_2 = fn value ->
+        if rem(value, 2) == 0, do: right(value), else: left("not even")
+      end
+
+      result =
+        validate(3, [validator_1, validator_2])
+        |> run()
+
+      assert result == Either.left(["not even"])
+    end
+
+    test "multiple validators fail, returns Left with all errors" do
+      validator_1 = fn value -> if value > 10, do: right(value), else: left("too small") end
+
+      validator_2 = fn value ->
+        if rem(value, 2) == 0, do: right(value), else: left("not even")
+      end
+
+      result =
+        validate(3, [validator_1, validator_2])
+        |> run()
+
+      assert result == Either.left(["too small", "not even"])
+    end
+
+    test "single validator passes, returns Right with the original value" do
+      validator = fn value -> if value > 0, do: right(value), else: left("too small") end
+
+      result =
+        validate(5, validator)
+        |> run()
+
+      assert result == Either.right(5)
+    end
+
+    test "single validator fails, returns Left with the error in a list" do
+      validator = fn value -> if value > 10, do: right(value), else: left("too small") end
+
+      result =
+        validate(5, validator)
+        |> run()
+
+      assert result == Either.left(["too small"])
+    end
+  end
+
   describe "from_result/1" do
     test "converts {:ok, value} to LazyTaskEither.Right" do
       result = from_result({:ok, 42})

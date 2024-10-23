@@ -69,6 +69,92 @@ defmodule Monex.LazyTaskEither do
     |> sequence()
   end
 
+  @spec sequence_a([t(error, value)]) :: t([error], [value])
+        when error: term(), value: term()
+  def sequence_a([]), do: right([])
+
+  def sequence_a([head | tail]) do
+    case Task.await(head.task.()) do
+      %Either.Right{value: value} ->
+        sequence_a(tail)
+        |> case do
+          %Right{task: task} ->
+            %Right{
+              task: fn ->
+                Task.async(fn ->
+                  %Either.Right{value: [value | Task.await(task.()).value]}
+                end)
+              end
+            }
+
+          %Left{task: task} ->
+            %Left{task: task}
+        end
+
+      %Either.Left{value: error} ->
+        sequence_a(tail)
+        |> case do
+          %Right{} ->
+            %Left{
+              task: fn ->
+                Task.async(fn -> %Either.Left{value: [error]} end)
+              end
+            }
+
+          %Left{task: task} ->
+            %Left{
+              task: fn ->
+                Task.async(fn -> %Either.Left{value: [error | Task.await(task.()).value]} end)
+              end
+            }
+        end
+    end
+  end
+
+  @spec validate(value, [(value -> t(error, any))]) :: t([error], value)
+        when error: term(), value: term()
+  def validate(value, validators) when is_list(validators) do
+    results = Enum.map(validators, fn validator -> validator.(value) end)
+
+    case sequence_a(results) do
+      %Right{task: _task} ->
+        %Right{
+          task: fn ->
+            Task.async(fn ->
+              %Either.Right{value: value}
+            end)
+          end
+        }
+
+      %Left{task: task} ->
+        %Left{
+          task: fn ->
+            Task.async(fn ->
+              %Either.Left{value: Task.await(task.()).value}
+            end)
+          end
+        }
+    end
+  end
+
+  def validate(value, validator) when is_function(validator, 1) do
+    case validator.(value) do
+      %Right{task: _task} ->
+        %Right{
+          task: fn ->
+            Task.async(fn -> %Either.Right{value: value} end)
+          end
+        }
+
+      %Left{task: task} ->
+        %Left{
+          task: fn ->
+            Task.async(fn -> %Either.Left{value: [Task.await(task.()).value]} end)
+          end
+        }
+    end
+  end
+
   @spec from_result({:ok, right} | {:error, left}) :: t(left, right)
         when left: term(), right: term()
   def from_result({:ok, value}), do: Right.pure(value)
