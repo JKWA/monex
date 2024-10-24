@@ -28,7 +28,7 @@ defmodule Monex.Either do
     - `validate/2`: Validates a value using a list of validators, collecting errors from `Left` values.
 
   ### Lifts
-    - `lift_option/2`: Converts a `Maybe` value to an `Either` monad.
+    - `lift_option/2`: Lifts a `Maybe` value to an `Either` monad.
     - `lift_predicate/3`: Lifts a value into an `Either` based on a predicate.
 
   ### Elixir Interops

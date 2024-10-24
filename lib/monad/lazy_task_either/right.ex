@@ -12,7 +12,9 @@ defmodule Monex.LazyTaskEither.Right do
   end
 
   defimpl Monex.Monad do
-    alias Monex.LazyTaskEither.{Right, Left}
+    alias Monex.LazyTaskEither
+    alias LazyTaskEither.{Right, Left}
+
     alias Monex.Either
 
     @spec ap(Right.t((right -> result)), LazyTaskEither.t(left, right)) ::
@@ -54,6 +56,8 @@ defmodule Monex.LazyTaskEither.Right do
       }
     end
 
+    @spec map(Right.t(right), (right -> result)) :: Right.t(result)
+          when right: term(), result: term()
     def map(%Right{task: task}, mapper) do
       %Right{
         task: fn ->

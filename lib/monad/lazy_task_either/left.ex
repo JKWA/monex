@@ -14,7 +14,7 @@ defmodule Monex.LazyTaskEither.Left do
   defimpl Monex.Monad do
     alias Monex.LazyTaskEither.Left
 
-    @spec bind(Left.t(left), (any() -> LazyTaskEither.t(left, result))) :: Left.t(left)
+    @spec bind(Left.t(left), (any() -> Monex.LazyTaskEither.t(left, result))) :: Left.t(left)
           when left: term(), result: term()
     def bind(%Left{task: task}, _binder) do
       %Left{
@@ -26,12 +26,13 @@ defmodule Monex.LazyTaskEither.Left do
       }
     end
 
-    # @spec map(Left.t(left), (any() -> any())) :: Left.t(left)
+    @spec map(Left.t(left), (right -> result)) :: Left.t(left)
+          when left: term(), right: term(), result: term()
     def map(%Left{task: task}, _mapper) do
       %Left{task: task}
     end
 
-    @spec ap(Left.t(left), LazyTaskEither.t(left, right)) :: Left.t(left)
+    @spec ap(Left.t(left), Monex.LazyTaskEither.t(left, right)) :: Left.t(left)
           when left: term(), right: term()
     def ap(%Left{} = left, _), do: left
   end

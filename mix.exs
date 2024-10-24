@@ -9,6 +9,11 @@ defmodule Monex.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       elixirc_paths: elixirc_paths(Mix.env()),
+      dialyzer: [
+        plt_add_apps: [:elixir, :mix],
+        plt_core_path: "_build/#{Mix.env()}",
+        plt_file: {:no_warn, "_build/#{Mix.env()}/dialyzer.plt"}
+      ],
       docs: [
         main: "readme",
         extras: ["README.md"],

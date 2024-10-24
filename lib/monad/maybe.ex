@@ -8,7 +8,7 @@ defmodule Monex.Maybe do
     - `nothing/0`: Returns a `Nothing` value.
 
   ### Lifts
-    - `lift_either/1`: Converts an `Either` value to a `Maybe`.
+    - `lift_either/1`: Lifts an `Either` value to a `Maybe`.
     - `lift_predicate/2`: Lifts a value into a `Maybe` based on a predicate.
 
   ### Refinements
