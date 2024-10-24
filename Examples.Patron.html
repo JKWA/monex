@@ -14,7 +14,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-4A9F1068.js"></script>
+    <script src="dist/sidebar_items-568BBC3F.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-YIPIRHGU.js"></script>
 
@@ -111,6 +111,11 @@ Pages
 
 <div id="top-content">
   <h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
 
     <span translate="no">Examples.Patron</span> 
     <small class="app-vsn" translate="no">(monex v0.1.0)</small>
@@ -243,6 +248,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
     </a>
     <h1 class="signature" translate="no">t()</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L19" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -278,6 +288,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
     </a>
     <h1 class="signature" translate="no">decrement_ticket(patron)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L147" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -295,8 +310,8 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6814189203-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6814189203-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">decrement_ticket</span><span class="p" data-group-id="6814189203-2">(</span><span class="n">patron</span><span class="p" data-group-id="6814189203-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="5735060816-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5735060816-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">decrement_ticket</span><span class="p" data-group-id="5735060816-2">(</span><span class="n">patron</span><span class="p" data-group-id="5735060816-2">)</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="o">.</span><span class="n">tickets</span><span class="w">
 </span><span class="mi">1</span></code></pre>
   </section>
@@ -309,6 +324,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">has_ticket?(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L115" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -327,12 +347,12 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron_with_ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="2180815527-1">(</span><span class="s">&quot;Ticket Holder&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2180815527-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">has_ticket?</span><span class="p" data-group-id="2180815527-2">(</span><span class="n">patron_with_ticket</span><span class="p" data-group-id="2180815527-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron_with_ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3828222746-1">(</span><span class="s">&quot;Ticket Holder&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="3828222746-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">has_ticket?</span><span class="p" data-group-id="3828222746-2">(</span><span class="n">patron_with_ticket</span><span class="p" data-group-id="3828222746-2">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">patron_no_ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="2180815527-3">(</span><span class="s">&quot;No Ticket&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2180815527-3">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">has_ticket?</span><span class="p" data-group-id="2180815527-4">(</span><span class="n">patron_no_ticket</span><span class="p" data-group-id="2180815527-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">patron_no_ticket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3828222746-3">(</span><span class="s">&quot;No Ticket&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">175</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3828222746-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">has_ticket?</span><span class="p" data-group-id="3828222746-4">(</span><span class="n">patron_no_ticket</span><span class="p" data-group-id="3828222746-4">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -344,6 +364,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">increment_ticket(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L131" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -362,8 +387,8 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="7347638929-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7347638929-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">increment_ticket</span><span class="p" data-group-id="7347638929-2">(</span><span class="n">patron</span><span class="p" data-group-id="7347638929-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="7809957920-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7809957920-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">increment_ticket</span><span class="p" data-group-id="7809957920-2">(</span><span class="n">patron</span><span class="p" data-group-id="7809957920-2">)</span><span class="w">
 </span><span class="gp unselectable">iex&gt; </span><span class="n">patron</span><span class="o">.</span><span class="n">tickets</span><span class="w">
 </span><span class="mi">3</span></code></pre>
   </section>
@@ -377,6 +402,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
     </a>
     <h1 class="signature" translate="no">new(name, height, tickets)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L34" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -388,8 +418,8 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4290239274-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4290239274-1">)</span><span class="w">
-</span><span class="p" data-group-id="4290239274-2">%</span><span class="nc" data-group-id="4290239274-2">Examples.Patron</span><span class="p" data-group-id="4290239274-2">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">height</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4290239274-2">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="3515419656-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3515419656-1">)</span><span class="w">
+</span><span class="p" data-group-id="3515419656-2">%</span><span class="nc" data-group-id="3515419656-2">Examples.Patron</span><span class="p" data-group-id="3515419656-2">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">height</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3515419656-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="too_short?/1">
@@ -400,6 +430,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">too_short?(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L53" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -418,12 +453,12 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6525901243-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6525901243-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_short?</span><span class="p" data-group-id="6525901243-2">(</span><span class="n">john</span><span class="p" data-group-id="6525901243-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="5040715005-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="5040715005-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_short?</span><span class="p" data-group-id="5040715005-2">(</span><span class="n">john</span><span class="p" data-group-id="5040715005-2">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">jane</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6525901243-3">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6525901243-3">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_short?</span><span class="p" data-group-id="6525901243-4">(</span><span class="n">jane</span><span class="p" data-group-id="6525901243-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">jane</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="5040715005-3">(</span><span class="s">&quot;Jane&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">160</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="5040715005-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_short?</span><span class="p" data-group-id="5040715005-4">(</span><span class="n">jane</span><span class="p" data-group-id="5040715005-4">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -435,6 +470,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">too_tall?(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L72" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -453,12 +493,12 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">tall_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="9726051909-1">(</span><span class="s">&quot;Tall Guy&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="9726051909-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_tall?</span><span class="p" data-group-id="9726051909-2">(</span><span class="n">tall_patron</span><span class="p" data-group-id="9726051909-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">tall_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6442564716-1">(</span><span class="s">&quot;Tall Guy&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="6442564716-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_tall?</span><span class="p" data-group-id="6442564716-2">(</span><span class="n">tall_patron</span><span class="p" data-group-id="6442564716-2">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">average_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="9726051909-3">(</span><span class="s">&quot;Average Joe&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9726051909-3">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_tall?</span><span class="p" data-group-id="9726051909-4">(</span><span class="n">average_patron</span><span class="p" data-group-id="9726051909-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">average_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="6442564716-3">(</span><span class="s">&quot;Average Joe&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6442564716-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">too_tall?</span><span class="p" data-group-id="6442564716-4">(</span><span class="n">average_patron</span><span class="p" data-group-id="6442564716-4">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -470,6 +510,11 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">valid_height?(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/patron_example.ex#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -488,12 +533,12 @@ It shows how to use Monex’s <code class="inline">Predicate</code> module to co
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">short_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4879152319-1">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="4879152319-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">valid_height?</span><span class="p" data-group-id="4879152319-2">(</span><span class="n">short_patron</span><span class="p" data-group-id="4879152319-2">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">short_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="2537828434-1">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2537828434-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">valid_height?</span><span class="p" data-group-id="2537828434-2">(</span><span class="n">short_patron</span><span class="p" data-group-id="2537828434-2">)</span><span class="w">
 </span><span class="no">false</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">perfect_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="4879152319-3">(</span><span class="s">&quot;Perfect Height&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="4879152319-3">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">valid_height?</span><span class="p" data-group-id="4879152319-4">(</span><span class="n">perfect_patron</span><span class="p" data-group-id="4879152319-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">perfect_patron</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">new</span><span class="p" data-group-id="2537828434-3">(</span><span class="s">&quot;Perfect Height&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2537828434-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Examples.Patron</span><span class="o">.</span><span class="n">valid_height?</span><span class="p" data-group-id="2537828434-4">(</span><span class="n">perfect_patron</span><span class="p" data-group-id="2537828434-4">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>

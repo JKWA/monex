@@ -14,7 +14,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-4A9F1068.js"></script>
+    <script src="dist/sidebar_items-568BBC3F.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-YIPIRHGU.js"></script>
 
@@ -111,6 +111,11 @@ Pages
 
 <div id="top-content">
   <h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
 
     <span translate="no">Examples.RideMonadValidationAsync</span> 
     <small class="app-vsn" translate="no">(monex v0.1.0)</small>
@@ -240,6 +245,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
     </a>
     <h1 class="signature" translate="no">task_either_t()</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L26" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -275,6 +285,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
     </a>
     <h1 class="signature" translate="no">add_ticket(patron)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L166" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -292,10 +307,10 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="6006206179-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6006206179-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">add_ticket</span><span class="p" data-group-id="6006206179-2">(</span><span class="n">task</span><span class="p" data-group-id="6006206179-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="6006206179-3">(</span><span class="n">task</span><span class="p" data-group-id="6006206179-3">)</span><span class="w">
-</span><span class="p" data-group-id="6006206179-4">%</span><span class="nc" data-group-id="6006206179-4">Monex.Either.Right</span><span class="p" data-group-id="6006206179-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6006206179-5">%</span><span class="nc" data-group-id="6006206179-5">Examples.Patron</span><span class="p" data-group-id="6006206179-5">{</span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="6006206179-5">}</span><span class="p" data-group-id="6006206179-4">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="1145163349-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1145163349-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">add_ticket</span><span class="p" data-group-id="1145163349-2">(</span><span class="n">task</span><span class="p" data-group-id="1145163349-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1145163349-3">(</span><span class="n">task</span><span class="p" data-group-id="1145163349-3">)</span><span class="w">
+</span><span class="p" data-group-id="1145163349-4">%</span><span class="nc" data-group-id="1145163349-4">Monex.Either.Right</span><span class="p" data-group-id="1145163349-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1145163349-5">%</span><span class="nc" data-group-id="1145163349-5">Examples.Patron</span><span class="p" data-group-id="1145163349-5">{</span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="1145163349-5">}</span><span class="p" data-group-id="1145163349-4">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="check_ticket_availability/1">
@@ -306,6 +321,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">check_ticket_availability(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L93" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -324,15 +344,15 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2488807275-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2488807275-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_ticket_availability</span><span class="p" data-group-id="2488807275-2">(</span><span class="n">task</span><span class="p" data-group-id="2488807275-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2488807275-3">(</span><span class="n">task</span><span class="p" data-group-id="2488807275-3">)</span><span class="w">
-</span><span class="p" data-group-id="2488807275-4">%</span><span class="nc" data-group-id="2488807275-4">Monex.Either.Right</span><span class="p" data-group-id="2488807275-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2488807275-5">%</span><span class="nc" data-group-id="2488807275-5">Examples.Patron</span><span class="p" data-group-id="2488807275-5">{</span><span class="n">...</span><span class="p" data-group-id="2488807275-5">}</span><span class="p" data-group-id="2488807275-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="3651198615-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3651198615-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_ticket_availability</span><span class="p" data-group-id="3651198615-2">(</span><span class="n">task</span><span class="p" data-group-id="3651198615-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3651198615-3">(</span><span class="n">task</span><span class="p" data-group-id="3651198615-3">)</span><span class="w">
+</span><span class="p" data-group-id="3651198615-4">%</span><span class="nc" data-group-id="3651198615-4">Monex.Either.Right</span><span class="p" data-group-id="3651198615-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3651198615-5">%</span><span class="nc" data-group-id="3651198615-5">Examples.Patron</span><span class="p" data-group-id="3651198615-5">{</span><span class="n">...</span><span class="p" data-group-id="3651198615-5">}</span><span class="p" data-group-id="3651198615-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2488807275-6">(</span><span class="s">&quot;Ticketless&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2488807275-6">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_ticket_availability</span><span class="p" data-group-id="2488807275-7">(</span><span class="n">task</span><span class="p" data-group-id="2488807275-7">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2488807275-8">(</span><span class="n">task</span><span class="p" data-group-id="2488807275-8">)</span><span class="w">
-</span><span class="p" data-group-id="2488807275-9">%</span><span class="nc" data-group-id="2488807275-9">Monex.Either.Left</span><span class="p" data-group-id="2488807275-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron is out of tickets&quot;</span><span class="p" data-group-id="2488807275-9">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="3651198615-6">(</span><span class="s">&quot;Ticketless&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">180</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3651198615-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_ticket_availability</span><span class="p" data-group-id="3651198615-7">(</span><span class="n">task</span><span class="p" data-group-id="3651198615-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3651198615-8">(</span><span class="n">task</span><span class="p" data-group-id="3651198615-8">)</span><span class="w">
+</span><span class="p" data-group-id="3651198615-9">%</span><span class="nc" data-group-id="3651198615-9">Monex.Either.Left</span><span class="p" data-group-id="3651198615-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron is out of tickets&quot;</span><span class="p" data-group-id="3651198615-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="check_valid_height/1">
@@ -343,6 +363,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">check_valid_height(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L62" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -361,15 +386,15 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="0899947172-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0899947172-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_valid_height</span><span class="p" data-group-id="0899947172-2">(</span><span class="n">task</span><span class="p" data-group-id="0899947172-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="0899947172-3">(</span><span class="n">task</span><span class="p" data-group-id="0899947172-3">)</span><span class="w">
-</span><span class="p" data-group-id="0899947172-4">%</span><span class="nc" data-group-id="0899947172-4">Monex.Either.Right</span><span class="p" data-group-id="0899947172-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0899947172-5">%</span><span class="nc" data-group-id="0899947172-5">Examples.Patron</span><span class="p" data-group-id="0899947172-5">{</span><span class="n">...</span><span class="p" data-group-id="0899947172-5">}</span><span class="p" data-group-id="0899947172-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2081722699-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2081722699-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_valid_height</span><span class="p" data-group-id="2081722699-2">(</span><span class="n">task</span><span class="p" data-group-id="2081722699-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2081722699-3">(</span><span class="n">task</span><span class="p" data-group-id="2081722699-3">)</span><span class="w">
+</span><span class="p" data-group-id="2081722699-4">%</span><span class="nc" data-group-id="2081722699-4">Monex.Either.Right</span><span class="p" data-group-id="2081722699-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2081722699-5">%</span><span class="nc" data-group-id="2081722699-5">Examples.Patron</span><span class="p" data-group-id="2081722699-5">{</span><span class="n">...</span><span class="p" data-group-id="2081722699-5">}</span><span class="p" data-group-id="2081722699-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="0899947172-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="0899947172-6">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_valid_height</span><span class="p" data-group-id="0899947172-7">(</span><span class="n">task</span><span class="p" data-group-id="0899947172-7">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="0899947172-8">(</span><span class="n">task</span><span class="p" data-group-id="0899947172-8">)</span><span class="w">
-</span><span class="p" data-group-id="0899947172-9">%</span><span class="nc" data-group-id="0899947172-9">Monex.Either.Left</span><span class="p" data-group-id="0899947172-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="0899947172-9">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2081722699-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2081722699-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">check_valid_height</span><span class="p" data-group-id="2081722699-7">(</span><span class="n">task</span><span class="p" data-group-id="2081722699-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2081722699-8">(</span><span class="n">task</span><span class="p" data-group-id="2081722699-8">)</span><span class="w">
+</span><span class="p" data-group-id="2081722699-9">%</span><span class="nc" data-group-id="2081722699-9">Monex.Either.Left</span><span class="p" data-group-id="2081722699-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="2081722699-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="register_patron/3">
@@ -380,6 +405,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">register_patron(name, height, tickets)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L39" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -398,9 +428,9 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="3801454501-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3801454501-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="3801454501-2">(</span><span class="n">task</span><span class="p" data-group-id="3801454501-2">)</span><span class="w">
-</span><span class="p" data-group-id="3801454501-3">%</span><span class="nc" data-group-id="3801454501-3">Monex.Either.Right</span><span class="p" data-group-id="3801454501-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3801454501-4">%</span><span class="nc" data-group-id="3801454501-4">Examples.Patron</span><span class="p" data-group-id="3801454501-4">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">height</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="3801454501-4">}</span><span class="p" data-group-id="3801454501-3">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="0278514914-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0278514914-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="0278514914-2">(</span><span class="n">task</span><span class="p" data-group-id="0278514914-2">)</span><span class="w">
+</span><span class="p" data-group-id="0278514914-3">%</span><span class="nc" data-group-id="0278514914-3">Monex.Either.Right</span><span class="p" data-group-id="0278514914-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0278514914-4">%</span><span class="nc" data-group-id="0278514914-4">Examples.Patron</span><span class="p" data-group-id="0278514914-4">{</span><span class="ss">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="ss">height</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="0278514914-4">}</span><span class="p" data-group-id="0278514914-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="take_ride/1">
@@ -411,6 +441,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">take_ride(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L148" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -429,15 +464,15 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="8811759488-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8811759488-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">take_ride</span><span class="p" data-group-id="8811759488-2">(</span><span class="n">task</span><span class="p" data-group-id="8811759488-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8811759488-3">(</span><span class="n">task</span><span class="p" data-group-id="8811759488-3">)</span><span class="w">
-</span><span class="p" data-group-id="8811759488-4">%</span><span class="nc" data-group-id="8811759488-4">Monex.Either.Right</span><span class="p" data-group-id="8811759488-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8811759488-5">%</span><span class="nc" data-group-id="8811759488-5">Examples.Patron</span><span class="p" data-group-id="8811759488-5">{</span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="8811759488-5">}</span><span class="p" data-group-id="8811759488-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2103027441-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2103027441-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">take_ride</span><span class="p" data-group-id="2103027441-2">(</span><span class="n">task</span><span class="p" data-group-id="2103027441-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2103027441-3">(</span><span class="n">task</span><span class="p" data-group-id="2103027441-3">)</span><span class="w">
+</span><span class="p" data-group-id="2103027441-4">%</span><span class="nc" data-group-id="2103027441-4">Monex.Either.Right</span><span class="p" data-group-id="2103027441-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2103027441-5">%</span><span class="nc" data-group-id="2103027441-5">Examples.Patron</span><span class="p" data-group-id="2103027441-5">{</span><span class="ss">tickets</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="2103027441-5">}</span><span class="p" data-group-id="2103027441-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="8811759488-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="8811759488-6">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">take_ride</span><span class="p" data-group-id="8811759488-7">(</span><span class="n">task</span><span class="p" data-group-id="8811759488-7">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="8811759488-8">(</span><span class="n">task</span><span class="p" data-group-id="8811759488-8">)</span><span class="w">
-</span><span class="p" data-group-id="8811759488-9">%</span><span class="nc" data-group-id="8811759488-9">Monex.Either.Left</span><span class="p" data-group-id="8811759488-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="8811759488-9">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="2103027441-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2103027441-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">take_ride</span><span class="p" data-group-id="2103027441-7">(</span><span class="n">task</span><span class="p" data-group-id="2103027441-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2103027441-8">(</span><span class="n">task</span><span class="p" data-group-id="2103027441-8">)</span><span class="w">
+</span><span class="p" data-group-id="2103027441-9">%</span><span class="nc" data-group-id="2103027441-9">Monex.Either.Left</span><span class="p" data-group-id="2103027441-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="2103027441-9">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="validate_patron/1">
@@ -448,6 +483,11 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">validate_patron(patron)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/examples/ride_monad_validate_asyn.ex#L123" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -467,15 +507,15 @@ If all conditions pass, it returns <code class="inline">Right(patron)</code>; ot
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="1659394407-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1659394407-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">validate_patron</span><span class="p" data-group-id="1659394407-2">(</span><span class="n">task</span><span class="p" data-group-id="1659394407-2">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1659394407-3">(</span><span class="n">task</span><span class="p" data-group-id="1659394407-3">)</span><span class="w">
-</span><span class="p" data-group-id="1659394407-4">%</span><span class="nc" data-group-id="1659394407-4">Monex.Either.Right</span><span class="p" data-group-id="1659394407-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1659394407-5">%</span><span class="nc" data-group-id="1659394407-5">Examples.Patron</span><span class="p" data-group-id="1659394407-5">{</span><span class="n">...</span><span class="p" data-group-id="1659394407-5">}</span><span class="p" data-group-id="1659394407-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="1534814267-1">(</span><span class="s">&quot;John&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="1534814267-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">validate_patron</span><span class="p" data-group-id="1534814267-2">(</span><span class="n">task</span><span class="p" data-group-id="1534814267-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1534814267-3">(</span><span class="n">task</span><span class="p" data-group-id="1534814267-3">)</span><span class="w">
+</span><span class="p" data-group-id="1534814267-4">%</span><span class="nc" data-group-id="1534814267-4">Monex.Either.Right</span><span class="p" data-group-id="1534814267-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="1534814267-5">%</span><span class="nc" data-group-id="1534814267-5">Examples.Patron</span><span class="p" data-group-id="1534814267-5">{</span><span class="n">...</span><span class="p" data-group-id="1534814267-5">}</span><span class="p" data-group-id="1534814267-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="1659394407-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1659394407-6">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">validate_patron</span><span class="p" data-group-id="1659394407-7">(</span><span class="n">task</span><span class="p" data-group-id="1659394407-7">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1659394407-8">(</span><span class="n">task</span><span class="p" data-group-id="1659394407-8">)</span><span class="w">
-</span><span class="p" data-group-id="1659394407-9">%</span><span class="nc" data-group-id="1659394407-9">Monex.Either.Left</span><span class="p" data-group-id="1659394407-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="1659394407-9">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">register_patron</span><span class="p" data-group-id="1534814267-6">(</span><span class="s">&quot;Shorty&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p" data-group-id="1534814267-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Examples.RideMonadValidationAsync</span><span class="o">.</span><span class="n">validate_patron</span><span class="p" data-group-id="1534814267-7">(</span><span class="n">task</span><span class="p" data-group-id="1534814267-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1534814267-8">(</span><span class="n">task</span><span class="p" data-group-id="1534814267-8">)</span><span class="w">
+</span><span class="p" data-group-id="1534814267-9">%</span><span class="nc" data-group-id="1534814267-9">Monex.Either.Left</span><span class="p" data-group-id="1534814267-9">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Patron&#39;s height is not valid&quot;</span><span class="p" data-group-id="1534814267-9">}</span></code></pre>
   </section>
 </section>
 

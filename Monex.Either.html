@@ -14,7 +14,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-4A9F1068.js"></script>
+    <script src="dist/sidebar_items-568BBC3F.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-YIPIRHGU.js"></script>
 
@@ -111,6 +111,11 @@ Pages
 
 <div id="top-content">
   <h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L1" title="View Source" class="icon-action" rel="help">
+        <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+        <span class="sr-only">View Source</span>
+      </a>
 
     <span translate="no">Monex.Either</span> 
     <small class="app-vsn" translate="no">(monex v0.1.0)</small>
@@ -411,6 +416,11 @@ a <code class="inline">Left</code> is returned using the <code class="inline">er
     </a>
     <h1 class="signature" translate="no">t(left, right)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L45" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -446,6 +456,11 @@ a <code class="inline">Left</code> is returned using the <code class="inline">er
     </a>
     <h1 class="signature" translate="no">filter_or_else(either, predicate, error_func)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L112" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -458,11 +473,11 @@ a <code class="inline">Left</code> is returned using the <code class="inline">er
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">filter_or_else</span><span class="p" data-group-id="7799447868-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7799447868-2">(</span><span class="mi">5</span><span class="p" data-group-id="7799447868-2">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7799447868-3">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="7799447868-3">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7799447868-4">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="7799447868-4">end</span><span class="p" data-group-id="7799447868-1">)</span><span class="w">
-</span><span class="p" data-group-id="7799447868-5">%</span><span class="nc" data-group-id="7799447868-5">Monex.Either.Right</span><span class="p" data-group-id="7799447868-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7799447868-5">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">filter_or_else</span><span class="p" data-group-id="4403387403-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="4403387403-2">(</span><span class="mi">5</span><span class="p" data-group-id="4403387403-2">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4403387403-3">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="4403387403-3">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4403387403-4">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="4403387403-4">end</span><span class="p" data-group-id="4403387403-1">)</span><span class="w">
+</span><span class="p" data-group-id="4403387403-5">%</span><span class="nc" data-group-id="4403387403-5">Monex.Either.Right</span><span class="p" data-group-id="4403387403-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="4403387403-5">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">filter_or_else</span><span class="p" data-group-id="7799447868-6">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7799447868-7">(</span><span class="mi">2</span><span class="p" data-group-id="7799447868-7">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7799447868-8">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="7799447868-8">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7799447868-9">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="7799447868-9">end</span><span class="p" data-group-id="7799447868-6">)</span><span class="w">
-</span><span class="p" data-group-id="7799447868-10">%</span><span class="nc" data-group-id="7799447868-10">Monex.Either.Left</span><span class="p" data-group-id="7799447868-10">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7799447868-10">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">filter_or_else</span><span class="p" data-group-id="4403387403-6">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="4403387403-7">(</span><span class="mi">2</span><span class="p" data-group-id="4403387403-7">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4403387403-8">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="4403387403-8">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="4403387403-9">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="4403387403-9">end</span><span class="p" data-group-id="4403387403-6">)</span><span class="w">
+</span><span class="p" data-group-id="4403387403-10">%</span><span class="nc" data-group-id="4403387403-10">Monex.Either.Left</span><span class="p" data-group-id="4403387403-10">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="4403387403-10">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="from_result/1">
@@ -473,6 +488,11 @@ a <code class="inline">Left</code> is returned using the <code class="inline">er
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">from_result(arg)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L344" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -492,11 +512,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="2894982550-1">(</span><span class="p" data-group-id="2894982550-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2894982550-2">}</span><span class="p" data-group-id="2894982550-1">)</span><span class="w">
-</span><span class="p" data-group-id="2894982550-3">%</span><span class="nc" data-group-id="2894982550-3">Monex.Either.Right</span><span class="p" data-group-id="2894982550-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2894982550-3">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="7889506498-1">(</span><span class="p" data-group-id="7889506498-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7889506498-2">}</span><span class="p" data-group-id="7889506498-1">)</span><span class="w">
+</span><span class="p" data-group-id="7889506498-3">%</span><span class="nc" data-group-id="7889506498-3">Monex.Either.Right</span><span class="p" data-group-id="7889506498-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7889506498-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="2894982550-4">(</span><span class="p" data-group-id="2894982550-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2894982550-5">}</span><span class="p" data-group-id="2894982550-4">)</span><span class="w">
-</span><span class="p" data-group-id="2894982550-6">%</span><span class="nc" data-group-id="2894982550-6">Monex.Either.Left</span><span class="p" data-group-id="2894982550-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2894982550-6">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="7889506498-4">(</span><span class="p" data-group-id="7889506498-5">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7889506498-5">}</span><span class="p" data-group-id="7889506498-4">)</span><span class="w">
+</span><span class="p" data-group-id="7889506498-6">%</span><span class="nc" data-group-id="7889506498-6">Monex.Either.Left</span><span class="p" data-group-id="7889506498-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7889506498-6">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="from_try/1">
@@ -507,6 +527,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">from_try(func)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L379" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -525,11 +550,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="2800394228-1">(</span><span class="k" data-group-id="2800394228-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k" data-group-id="2800394228-2">end</span><span class="p" data-group-id="2800394228-1">)</span><span class="w">
-</span><span class="p" data-group-id="2800394228-3">%</span><span class="nc" data-group-id="2800394228-3">Monex.Either.Right</span><span class="p" data-group-id="2800394228-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2800394228-3">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="8995068966-1">(</span><span class="k" data-group-id="8995068966-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="k" data-group-id="8995068966-2">end</span><span class="p" data-group-id="8995068966-1">)</span><span class="w">
+</span><span class="p" data-group-id="8995068966-3">%</span><span class="nc" data-group-id="8995068966-3">Monex.Either.Right</span><span class="p" data-group-id="8995068966-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="8995068966-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="2800394228-4">(</span><span class="k" data-group-id="2800394228-5">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">raise</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="2800394228-5">end</span><span class="p" data-group-id="2800394228-4">)</span><span class="w">
-</span><span class="p" data-group-id="2800394228-6">%</span><span class="nc" data-group-id="2800394228-6">Monex.Either.Left</span><span class="p" data-group-id="2800394228-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2800394228-7">%</span><span class="nc" data-group-id="2800394228-7">RuntimeError</span><span class="p" data-group-id="2800394228-7">{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2800394228-7">}</span><span class="p" data-group-id="2800394228-6">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="8995068966-4">(</span><span class="k" data-group-id="8995068966-5">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">raise</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="8995068966-5">end</span><span class="p" data-group-id="8995068966-4">)</span><span class="w">
+</span><span class="p" data-group-id="8995068966-6">%</span><span class="nc" data-group-id="8995068966-6">Monex.Either.Left</span><span class="p" data-group-id="8995068966-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8995068966-7">%</span><span class="nc" data-group-id="8995068966-7">RuntimeError</span><span class="p" data-group-id="8995068966-7">{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="8995068966-7">}</span><span class="p" data-group-id="8995068966-6">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="get_eq/1">
@@ -540,6 +565,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">get_eq(custom_eq)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L157" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -552,11 +582,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_eq</span><span class="p" data-group-id="9620166314-1">(</span><span class="p" data-group-id="9620166314-2">%{</span><span class="ss">equals?</span><span class="p">:</span><span class="w"> </span><span class="k" data-group-id="9620166314-3">fn</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k" data-group-id="9620166314-3">end</span><span class="p" data-group-id="9620166314-2">}</span><span class="p" data-group-id="9620166314-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="o">.</span><span class="n">equals?</span><span class="o">.</span><span class="p" data-group-id="9620166314-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9620166314-5">(</span><span class="mi">5</span><span class="p" data-group-id="9620166314-5">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9620166314-6">(</span><span class="mi">5</span><span class="p" data-group-id="9620166314-6">)</span><span class="p" data-group-id="9620166314-4">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_eq</span><span class="p" data-group-id="7760260655-1">(</span><span class="p" data-group-id="7760260655-2">%{</span><span class="ss">equals?</span><span class="p">:</span><span class="w"> </span><span class="k" data-group-id="7760260655-3">fn</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k" data-group-id="7760260655-3">end</span><span class="p" data-group-id="7760260655-2">}</span><span class="p" data-group-id="7760260655-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="o">.</span><span class="n">equals?</span><span class="o">.</span><span class="p" data-group-id="7760260655-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7760260655-5">(</span><span class="mi">5</span><span class="p" data-group-id="7760260655-5">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7760260655-6">(</span><span class="mi">5</span><span class="p" data-group-id="7760260655-6">)</span><span class="p" data-group-id="7760260655-4">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="o">.</span><span class="n">equals?</span><span class="o">.</span><span class="p" data-group-id="9620166314-7">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9620166314-8">(</span><span class="mi">5</span><span class="p" data-group-id="9620166314-8">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="9620166314-9">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="9620166314-9">)</span><span class="p" data-group-id="9620166314-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">eq</span><span class="o">.</span><span class="n">equals?</span><span class="o">.</span><span class="p" data-group-id="7760260655-7">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7760260655-8">(</span><span class="mi">5</span><span class="p" data-group-id="7760260655-8">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7760260655-9">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7760260655-9">)</span><span class="p" data-group-id="7760260655-7">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -569,6 +599,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature" translate="no">get_or_else(either, default)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L137" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -580,10 +615,10 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_or_else</span><span class="p" data-group-id="2541286826-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2541286826-2">(</span><span class="mi">5</span><span class="p" data-group-id="2541286826-2">)</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2541286826-1">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_or_else</span><span class="p" data-group-id="3693027103-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="3693027103-2">(</span><span class="mi">5</span><span class="p" data-group-id="3693027103-2">)</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3693027103-1">)</span><span class="w">
 </span><span class="mi">5</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_or_else</span><span class="p" data-group-id="2541286826-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="2541286826-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2541286826-4">)</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="2541286826-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_or_else</span><span class="p" data-group-id="3693027103-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="3693027103-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="3693027103-4">)</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="3693027103-3">)</span><span class="w">
 </span><span class="mi">0</span></code></pre>
   </section>
 </section>
@@ -596,6 +631,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature" translate="no">get_ord(custom_ord)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L177" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -607,8 +647,8 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_ord</span><span class="p" data-group-id="9582286295-1">(</span><span class="p" data-group-id="9582286295-2">%{</span><span class="ss">lt?</span><span class="p">:</span><span class="w"> </span><span class="k" data-group-id="9582286295-3">fn</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k" data-group-id="9582286295-3">end</span><span class="p" data-group-id="9582286295-2">}</span><span class="p" data-group-id="9582286295-1">)</span><span class="w">
-</span><span class="gp unselectable">iex&gt; </span><span class="n">ord</span><span class="o">.</span><span class="n">lt?</span><span class="o">.</span><span class="p" data-group-id="9582286295-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9582286295-5">(</span><span class="mi">3</span><span class="p" data-group-id="9582286295-5">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9582286295-6">(</span><span class="mi">5</span><span class="p" data-group-id="9582286295-6">)</span><span class="p" data-group-id="9582286295-4">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">ord</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">get_ord</span><span class="p" data-group-id="1229037627-1">(</span><span class="p" data-group-id="1229037627-2">%{</span><span class="ss">lt?</span><span class="p">:</span><span class="w"> </span><span class="k" data-group-id="1229037627-3">fn</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="k" data-group-id="1229037627-3">end</span><span class="p" data-group-id="1229037627-2">}</span><span class="p" data-group-id="1229037627-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">ord</span><span class="o">.</span><span class="n">lt?</span><span class="o">.</span><span class="p" data-group-id="1229037627-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="1229037627-5">(</span><span class="mi">3</span><span class="p" data-group-id="1229037627-5">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="1229037627-6">(</span><span class="mi">5</span><span class="p" data-group-id="1229037627-6">)</span><span class="p" data-group-id="1229037627-4">)</span><span class="w">
 </span><span class="no">true</span></code></pre>
   </section>
 </section>
@@ -621,6 +661,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature" translate="no">left(value)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L70" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -632,8 +677,8 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="5058342463-1">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="5058342463-1">)</span><span class="w">
-</span><span class="p" data-group-id="5058342463-2">%</span><span class="nc" data-group-id="5058342463-2">Monex.Either.Left</span><span class="p" data-group-id="5058342463-2">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="5058342463-2">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0254207890-1">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0254207890-1">)</span><span class="w">
+</span><span class="p" data-group-id="0254207890-2">%</span><span class="nc" data-group-id="0254207890-2">Monex.Either.Left</span><span class="p" data-group-id="0254207890-2">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0254207890-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="left?/1">
@@ -644,6 +689,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">left?(arg1)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L83" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -656,10 +706,10 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left?</span><span class="p" data-group-id="7063237953-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7063237953-2">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7063237953-2">)</span><span class="p" data-group-id="7063237953-1">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left?</span><span class="p" data-group-id="0036529610-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0036529610-2">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0036529610-2">)</span><span class="p" data-group-id="0036529610-1">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left?</span><span class="p" data-group-id="7063237953-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7063237953-4">(</span><span class="mi">5</span><span class="p" data-group-id="7063237953-4">)</span><span class="p" data-group-id="7063237953-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left?</span><span class="p" data-group-id="0036529610-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0036529610-4">(</span><span class="mi">5</span><span class="p" data-group-id="0036529610-4">)</span><span class="p" data-group-id="0036529610-3">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -672,6 +722,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature" translate="no">lift_option(maybe, on_none)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L304" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -683,11 +738,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="7868336637-1">(</span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">just</span><span class="p" data-group-id="7868336637-2">(</span><span class="mi">5</span><span class="p" data-group-id="7868336637-2">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7868336637-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="7868336637-3">end</span><span class="p" data-group-id="7868336637-1">)</span><span class="w">
-</span><span class="p" data-group-id="7868336637-4">%</span><span class="nc" data-group-id="7868336637-4">Monex.Either.Right</span><span class="p" data-group-id="7868336637-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="7868336637-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="2525831490-1">(</span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">just</span><span class="p" data-group-id="2525831490-2">(</span><span class="mi">5</span><span class="p" data-group-id="2525831490-2">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2525831490-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="2525831490-3">end</span><span class="p" data-group-id="2525831490-1">)</span><span class="w">
+</span><span class="p" data-group-id="2525831490-4">%</span><span class="nc" data-group-id="2525831490-4">Monex.Either.Right</span><span class="p" data-group-id="2525831490-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2525831490-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="7868336637-5">(</span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">nothing</span><span class="p" data-group-id="7868336637-6">(</span><span class="p" data-group-id="7868336637-6">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7868336637-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="7868336637-7">end</span><span class="p" data-group-id="7868336637-5">)</span><span class="w">
-</span><span class="p" data-group-id="7868336637-8">%</span><span class="nc" data-group-id="7868336637-8">Monex.Either.Left</span><span class="p" data-group-id="7868336637-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7868336637-8">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="2525831490-5">(</span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">nothing</span><span class="p" data-group-id="2525831490-6">(</span><span class="p" data-group-id="2525831490-6">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2525831490-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="2525831490-7">end</span><span class="p" data-group-id="2525831490-5">)</span><span class="w">
+</span><span class="p" data-group-id="2525831490-8">%</span><span class="nc" data-group-id="2525831490-8">Monex.Either.Left</span><span class="p" data-group-id="2525831490-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2525831490-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="lift_predicate/3">
@@ -698,6 +753,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">lift_predicate(value, predicate, on_false)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L323" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -710,11 +770,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="2281263016-1">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2281263016-2">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="2281263016-2">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2281263016-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="2281263016-3">end</span><span class="p" data-group-id="2281263016-1">)</span><span class="w">
-</span><span class="p" data-group-id="2281263016-4">%</span><span class="nc" data-group-id="2281263016-4">Monex.Either.Right</span><span class="p" data-group-id="2281263016-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="2281263016-4">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="1603867427-1">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1603867427-2">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="1603867427-2">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1603867427-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="1603867427-3">end</span><span class="p" data-group-id="1603867427-1">)</span><span class="w">
+</span><span class="p" data-group-id="1603867427-4">%</span><span class="nc" data-group-id="1603867427-4">Monex.Either.Right</span><span class="p" data-group-id="1603867427-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1603867427-4">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="2281263016-5">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2281263016-6">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="2281263016-6">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="2281263016-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="2281263016-7">end</span><span class="p" data-group-id="2281263016-5">)</span><span class="w">
-</span><span class="p" data-group-id="2281263016-8">%</span><span class="nc" data-group-id="2281263016-8">Monex.Either.Left</span><span class="p" data-group-id="2281263016-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="2281263016-8">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="1603867427-5">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1603867427-6">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="k" data-group-id="1603867427-6">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="1603867427-7">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="1603867427-7">end</span><span class="p" data-group-id="1603867427-5">)</span><span class="w">
+</span><span class="p" data-group-id="1603867427-8">%</span><span class="nc" data-group-id="1603867427-8">Monex.Either.Left</span><span class="p" data-group-id="1603867427-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="1603867427-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="pure/1">
@@ -725,6 +785,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">pure(value)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L60" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -743,6 +808,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
     </a>
     <h1 class="signature" translate="no">right(value)</h1>
 
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L55" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
+
 
   </div>
 
@@ -754,8 +824,8 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0677408603-1">(</span><span class="mi">5</span><span class="p" data-group-id="0677408603-1">)</span><span class="w">
-</span><span class="p" data-group-id="0677408603-2">%</span><span class="nc" data-group-id="0677408603-2">Monex.Either.Right</span><span class="p" data-group-id="0677408603-2">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="0677408603-2">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="4784133880-1">(</span><span class="mi">5</span><span class="p" data-group-id="4784133880-1">)</span><span class="w">
+</span><span class="p" data-group-id="4784133880-2">%</span><span class="nc" data-group-id="4784133880-2">Monex.Either.Right</span><span class="p" data-group-id="4784133880-2">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="4784133880-2">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="right?/1">
@@ -766,6 +836,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">right?(arg1)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L97" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -778,10 +853,10 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right?</span><span class="p" data-group-id="7927226860-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7927226860-2">(</span><span class="mi">5</span><span class="p" data-group-id="7927226860-2">)</span><span class="p" data-group-id="7927226860-1">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right?</span><span class="p" data-group-id="0018637102-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0018637102-2">(</span><span class="mi">5</span><span class="p" data-group-id="0018637102-2">)</span><span class="p" data-group-id="0018637102-1">)</span><span class="w">
 </span><span class="no">true</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right?</span><span class="p" data-group-id="7927226860-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7927226860-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7927226860-4">)</span><span class="p" data-group-id="7927226860-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right?</span><span class="p" data-group-id="0018637102-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0018637102-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0018637102-4">)</span><span class="p" data-group-id="0018637102-3">)</span><span class="w">
 </span><span class="no">false</span></code></pre>
   </section>
 </section>
@@ -793,6 +868,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">sequence(list)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L208" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -812,11 +892,11 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="7040639657-1">(</span><span class="p" data-group-id="7040639657-2">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7040639657-3">(</span><span class="mi">1</span><span class="p" data-group-id="7040639657-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7040639657-4">(</span><span class="mi">2</span><span class="p" data-group-id="7040639657-4">)</span><span class="p" data-group-id="7040639657-2">]</span><span class="p" data-group-id="7040639657-1">)</span><span class="w">
-</span><span class="p" data-group-id="7040639657-5">%</span><span class="nc" data-group-id="7040639657-5">Monex.Either.Right</span><span class="p" data-group-id="7040639657-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7040639657-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7040639657-6">]</span><span class="p" data-group-id="7040639657-5">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="6364567191-1">(</span><span class="p" data-group-id="6364567191-2">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="6364567191-3">(</span><span class="mi">1</span><span class="p" data-group-id="6364567191-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="6364567191-4">(</span><span class="mi">2</span><span class="p" data-group-id="6364567191-4">)</span><span class="p" data-group-id="6364567191-2">]</span><span class="p" data-group-id="6364567191-1">)</span><span class="w">
+</span><span class="p" data-group-id="6364567191-5">%</span><span class="nc" data-group-id="6364567191-5">Monex.Either.Right</span><span class="p" data-group-id="6364567191-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6364567191-6">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="6364567191-6">]</span><span class="p" data-group-id="6364567191-5">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="7040639657-7">(</span><span class="p" data-group-id="7040639657-8">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7040639657-9">(</span><span class="mi">1</span><span class="p" data-group-id="7040639657-9">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7040639657-10">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7040639657-10">)</span><span class="p" data-group-id="7040639657-8">]</span><span class="p" data-group-id="7040639657-7">)</span><span class="w">
-</span><span class="p" data-group-id="7040639657-11">%</span><span class="nc" data-group-id="7040639657-11">Monex.Either.Left</span><span class="p" data-group-id="7040639657-11">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7040639657-11">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="6364567191-7">(</span><span class="p" data-group-id="6364567191-8">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="6364567191-9">(</span><span class="mi">1</span><span class="p" data-group-id="6364567191-9">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="6364567191-10">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6364567191-10">)</span><span class="p" data-group-id="6364567191-8">]</span><span class="p" data-group-id="6364567191-7">)</span><span class="w">
+</span><span class="p" data-group-id="6364567191-11">%</span><span class="nc" data-group-id="6364567191-11">Monex.Either.Left</span><span class="p" data-group-id="6364567191-11">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6364567191-11">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="sequence_a/1">
@@ -827,6 +907,11 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">sequence_a(list)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L244" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -846,8 +931,8 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence_a</span><span class="p" data-group-id="0755957548-1">(</span><span class="p" data-group-id="0755957548-2">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0755957548-3">(</span><span class="mi">1</span><span class="p" data-group-id="0755957548-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0755957548-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0755957548-4">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0755957548-5">(</span><span class="s">&quot;another error&quot;</span><span class="p" data-group-id="0755957548-5">)</span><span class="p" data-group-id="0755957548-2">]</span><span class="p" data-group-id="0755957548-1">)</span><span class="w">
-</span><span class="p" data-group-id="0755957548-6">%</span><span class="nc" data-group-id="0755957548-6">Monex.Either.Left</span><span class="p" data-group-id="0755957548-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="0755957548-7">[</span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;another error&quot;</span><span class="p" data-group-id="0755957548-7">]</span><span class="p" data-group-id="0755957548-6">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">sequence_a</span><span class="p" data-group-id="3344937776-1">(</span><span class="p" data-group-id="3344937776-2">[</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="3344937776-3">(</span><span class="mi">1</span><span class="p" data-group-id="3344937776-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="3344937776-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="3344937776-4">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="3344937776-5">(</span><span class="s">&quot;another error&quot;</span><span class="p" data-group-id="3344937776-5">)</span><span class="p" data-group-id="3344937776-2">]</span><span class="p" data-group-id="3344937776-1">)</span><span class="w">
+</span><span class="p" data-group-id="3344937776-6">%</span><span class="nc" data-group-id="3344937776-6">Monex.Either.Left</span><span class="p" data-group-id="3344937776-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3344937776-7">[</span><span class="s">&quot;error&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;another error&quot;</span><span class="p" data-group-id="3344937776-7">]</span><span class="p" data-group-id="3344937776-6">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_result/1">
@@ -858,6 +943,11 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">to_result(either)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L360" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -877,11 +967,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="0524534500-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0524534500-2">(</span><span class="mi">5</span><span class="p" data-group-id="0524534500-2">)</span><span class="p" data-group-id="0524534500-1">)</span><span class="w">
-</span><span class="p" data-group-id="0524534500-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="0524534500-3">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="1595451582-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="1595451582-2">(</span><span class="mi">5</span><span class="p" data-group-id="1595451582-2">)</span><span class="p" data-group-id="1595451582-1">)</span><span class="w">
+</span><span class="p" data-group-id="1595451582-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="1595451582-3">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="0524534500-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0524534500-5">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0524534500-5">)</span><span class="p" data-group-id="0524534500-4">)</span><span class="w">
-</span><span class="p" data-group-id="0524534500-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0524534500-6">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="1595451582-4">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="1595451582-5">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="1595451582-5">)</span><span class="p" data-group-id="1595451582-4">)</span><span class="w">
+</span><span class="p" data-group-id="1595451582-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="1595451582-6">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_try!/1">
@@ -892,6 +982,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">to_try!(either)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L402" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -910,10 +1005,10 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="6346044456-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="6346044456-2">(</span><span class="mi">5</span><span class="p" data-group-id="6346044456-2">)</span><span class="p" data-group-id="6346044456-1">)</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="6931606295-1">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="6931606295-2">(</span><span class="mi">5</span><span class="p" data-group-id="6931606295-2">)</span><span class="p" data-group-id="6931606295-1">)</span><span class="w">
 </span><span class="mi">5</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="6346044456-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="6346044456-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6346044456-4">)</span><span class="p" data-group-id="6346044456-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="6931606295-3">(</span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="6931606295-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6931606295-4">)</span><span class="p" data-group-id="6931606295-3">)</span><span class="w">
 </span><span class="gt">** (RuntimeError) error</span></code></pre>
   </section>
 </section>
@@ -925,6 +1020,11 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">traverse(func, list)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L228" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -944,8 +1044,8 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">traverse</span><span class="p" data-group-id="9947421124-1">(</span><span class="k" data-group-id="9947421124-2">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="9947421124-3">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9947421124-3">)</span><span class="w"> </span><span class="k" data-group-id="9947421124-2">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="9947421124-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="9947421124-4">]</span><span class="p" data-group-id="9947421124-1">)</span><span class="w">
-</span><span class="p" data-group-id="9947421124-5">%</span><span class="nc" data-group-id="9947421124-5">Monex.Either.Right</span><span class="p" data-group-id="9947421124-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="9947421124-6">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="9947421124-6">]</span><span class="p" data-group-id="9947421124-5">}</span></code></pre>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">traverse</span><span class="p" data-group-id="7993228478-1">(</span><span class="k" data-group-id="7993228478-2">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7993228478-3">(</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7993228478-3">)</span><span class="w"> </span><span class="k" data-group-id="7993228478-2">end</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7993228478-4">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7993228478-4">]</span><span class="p" data-group-id="7993228478-1">)</span><span class="w">
+</span><span class="p" data-group-id="7993228478-5">%</span><span class="nc" data-group-id="7993228478-5">Monex.Either.Right</span><span class="p" data-group-id="7993228478-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7993228478-6">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7993228478-6">]</span><span class="p" data-group-id="7993228478-5">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="validate/2">
@@ -956,6 +1056,11 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
       <span class="sr-only">Link to this function</span>
     </a>
     <h1 class="signature" translate="no">validate(value, validators)</h1>
+
+      <a href="https://github.com/JKWA/monex/blob/main/lib/monad/either.ex#L277" class="icon-action" rel="help" title="View Source">
+       <i class="ri-code-s-slash-line" aria-hidden="true"></i>
+       <span class="sr-only">View Source</span>
+     </a>
 
 
   </div>
@@ -975,11 +1080,11 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
   </a>
   <span class="text">Examples</span>
 </h2>
-<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="3695228819-1">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3695228819-2">[</span><span class="k" data-group-id="3695228819-3">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="3695228819-4">(</span><span class="n">x</span><span class="p" data-group-id="3695228819-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="3695228819-5">(</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="3695228819-5">)</span><span class="w"> </span><span class="k" data-group-id="3695228819-3">end</span><span class="p" data-group-id="3695228819-2">]</span><span class="p" data-group-id="3695228819-1">)</span><span class="w">
-</span><span class="p" data-group-id="3695228819-6">%</span><span class="nc" data-group-id="3695228819-6">Monex.Either.Right</span><span class="p" data-group-id="3695228819-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="3695228819-6">}</span><span class="w">
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="8939295986-1">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8939295986-2">[</span><span class="k" data-group-id="8939295986-3">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="8939295986-4">(</span><span class="n">x</span><span class="p" data-group-id="8939295986-4">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="8939295986-5">(</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="8939295986-5">)</span><span class="w"> </span><span class="k" data-group-id="8939295986-3">end</span><span class="p" data-group-id="8939295986-2">]</span><span class="p" data-group-id="8939295986-1">)</span><span class="w">
+</span><span class="p" data-group-id="8939295986-6">%</span><span class="nc" data-group-id="8939295986-6">Monex.Either.Right</span><span class="p" data-group-id="8939295986-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="8939295986-6">}</span><span class="w">
 
-</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="3695228819-7">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3695228819-8">[</span><span class="k" data-group-id="3695228819-9">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="3695228819-10">(</span><span class="n">x</span><span class="p" data-group-id="3695228819-10">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="3695228819-11">(</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="3695228819-11">)</span><span class="w"> </span><span class="k" data-group-id="3695228819-9">end</span><span class="p" data-group-id="3695228819-8">]</span><span class="p" data-group-id="3695228819-7">)</span><span class="w">
-</span><span class="p" data-group-id="3695228819-12">%</span><span class="nc" data-group-id="3695228819-12">Monex.Either.Left</span><span class="p" data-group-id="3695228819-12">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="3695228819-13">[</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="3695228819-13">]</span><span class="p" data-group-id="3695228819-12">}</span></code></pre>
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="8939295986-7">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="8939295986-8">[</span><span class="k" data-group-id="8939295986-9">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="8939295986-10">(</span><span class="n">x</span><span class="p" data-group-id="8939295986-10">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.Either</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="8939295986-11">(</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="8939295986-11">)</span><span class="w"> </span><span class="k" data-group-id="8939295986-9">end</span><span class="p" data-group-id="8939295986-8">]</span><span class="p" data-group-id="8939295986-7">)</span><span class="w">
+</span><span class="p" data-group-id="8939295986-12">%</span><span class="nc" data-group-id="8939295986-12">Monex.Either.Left</span><span class="p" data-group-id="8939295986-12">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8939295986-13">[</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="8939295986-13">]</span><span class="p" data-group-id="8939295986-12">}</span></code></pre>
   </section>
 </section>
 
