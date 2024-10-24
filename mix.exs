@@ -16,7 +16,7 @@ defmodule Monex.MixProject do
       ],
       docs: [
         main: "readme",
-        extras: ["README.md", "CHANGELOG.md"],
+        extras: ["README.md", "CHANGELOG.md", "LEARNING_RESOURCES.md", "LICENSE"],
         filter_prefix: "Examples",
         source_url: "https://github.com/JKWA/monex",
         source_url_pattern: "https://github.com/JKWA/monex/blob/main/%{path}#L%{line}"
