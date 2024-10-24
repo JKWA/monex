@@ -14,7 +14,7 @@
 
     <script src="dist/handlebars.runtime-NWIB6V2M.js"></script>
     <script src="dist/handlebars.templates-K7URE6B4.js"></script>
-    <script src="dist/sidebar_items-2860B2B9.js"></script>
+    <script src="dist/sidebar_items-E7270DD6.js"></script>
     <script src="docs_config.js"></script>
     <script async src="dist/html-YIPIRHGU.js"></script>
 
@@ -118,6 +118,46 @@ Pages
   </h1>
 
 
+    <section id="moduledoc">
+<p>The <a href="Monex.LazyTaskEither.html"><code class="inline">Monex.LazyTaskEither</code></a> module provides an implementation of the <code class="inline">LazyTaskEither</code> monad, which represents asynchronous computations that can either be <code class="inline">Right</code> (success) or <code class="inline">Left</code> (failure).</p><p><code class="inline">LazyTaskEither</code> defers the execution of a task until it is explicitly awaited, making it useful for handling asynchronous tasks that may succeed or fail.</p><h3 id="module-constructors" class="section-heading">
+  <a href="#module-constructors" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Constructors</span>
+</h3>
+<ul><li><a href="#right/1"><code class="inline">right/1</code></a>: Wraps a value in the <code class="inline">Right</code> monad.</li><li><a href="#left/1"><code class="inline">left/1</code></a>: Wraps a value in the <code class="inline">Left</code> monad.</li><li><a href="#pure/1"><code class="inline">pure/1</code></a>: Alias for <a href="#right/1"><code class="inline">right/1</code></a>.</li></ul><h3 id="module-execution" class="section-heading">
+  <a href="#module-execution" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Execution</span>
+</h3>
+<ul><li><a href="#run/1"><code class="inline">run/1</code></a>: Executes the deferred task inside the <code class="inline">LazyTaskEither</code> monad and returns its result (<code class="inline">Right</code> or <code class="inline">Left</code>).</li></ul><h3 id="module-sequencing" class="section-heading">
+  <a href="#module-sequencing" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Sequencing</span>
+</h3>
+<ul><li><a href="#sequence/1"><code class="inline">sequence/1</code></a>: Sequences a list of <code class="inline">LazyTaskEither</code> values, returning a list of <code class="inline">Right</code> values or the first <code class="inline">Left</code>.</li><li><a href="#traverse/2"><code class="inline">traverse/2</code></a>: Traverses a list with a function that returns <code class="inline">LazyTaskEither</code> values, collecting the results into a single <code class="inline">LazyTaskEither</code>.</li><li><a href="#sequence_a/1"><code class="inline">sequence_a/1</code></a>: Sequences a list of <code class="inline">LazyTaskEither</code> values, collecting all <code class="inline">Left</code> errors.</li></ul><h3 id="module-validation" class="section-heading">
+  <a href="#module-validation" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Validation</span>
+</h3>
+<ul><li><a href="#validate/2"><code class="inline">validate/2</code></a>: Validates a value using a list of validators, collecting errors from <code class="inline">Left</code> values.</li></ul><h3 id="module-lifts" class="section-heading">
+  <a href="#module-lifts" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Lifts</span>
+</h3>
+<ul><li><a href="#lift_either/1"><code class="inline">lift_either/1</code></a>: Lifts an <code class="inline">Either</code> value to a <code class="inline">LazyTaskEither</code> monad.</li><li><a href="#lift_option/2"><code class="inline">lift_option/2</code></a>: Lifts a <code class="inline">Maybe</code> value to a <code class="inline">LazyTaskEither</code> monad.</li><li><a href="#lift_predicate/3"><code class="inline">lift_predicate/3</code></a>: Lifts a value into a <code class="inline">LazyTaskEither</code> based on a predicate.</li></ul><h3 id="module-elixir-interops" class="section-heading">
+  <a href="#module-elixir-interops" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Elixir Interops</span>
+</h3>
+<ul><li><a href="#from_result/1"><code class="inline">from_result/1</code></a>: Converts a result (<code class="inline">{:ok, _}</code> or <code class="inline">{:error, _}</code>) to a <code class="inline">LazyTaskEither</code>.</li><li><a href="#to_result/1"><code class="inline">to_result/1</code></a>: Converts a <code class="inline">LazyTaskEither</code> to a result (<code class="inline">{:ok, value}</code> or <code class="inline">{:error, reason}</code>).</li><li><a href="#from_try/1"><code class="inline">from_try/1</code></a>: Wraps a function in a <code class="inline">LazyTaskEither</code>, catching exceptions.</li><li><a href="#to_try!/1"><code class="inline">to_try!/1</code></a>: Converts a <code class="inline">LazyTaskEither</code> to its value or raises an exception if <code class="inline">Left</code>.</li></ul>
+    </section>
+
 </div>
 
   <section id="summary" class="details-list">
@@ -152,6 +192,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Converts an Elixir <code class="inline">{:ok, value}</code> or <code class="inline">{:error, reason}</code> tuple into a <code class="inline">LazyTaskEither</code>.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -159,6 +201,8 @@ Pages
         <a href="#from_try/1" data-no-tooltip translate="no">from_try(func)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Wraps a function in a <code class="inline">LazyTaskEither</code>, catching exceptions and wrapping them in a <code class="inline">Left</code>.</p></div>
 
     </div>
 
@@ -168,6 +212,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Wraps a value in the <code class="inline">Left</code> monad, representing a failed computation.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -175,6 +221,8 @@ Pages
         <a href="#lift_either/1" data-no-tooltip translate="no">lift_either(arg1)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Converts an <code class="inline">Either</code> value into a <code class="inline">LazyTaskEither</code> monad.</p></div>
 
     </div>
 
@@ -184,6 +232,10 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Converts a <code class="inline">Maybe</code> value into a <code class="inline">LazyTaskEither</code> monad.
+If the <code class="inline">Maybe</code> is <code class="inline">Just</code>, the value is wrapped in <code class="inline">Right</code>.
+If it is <code class="inline">Nothing</code>, the value from <code class="inline">on_none</code> is wrapped in <code class="inline">Left</code>.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -191,6 +243,10 @@ Pages
         <a href="#lift_predicate/3" data-no-tooltip translate="no">lift_predicate(value, predicate, on_false)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Lifts a value into the <code class="inline">LazyTaskEither</code> monad based on a predicate.
+If the predicate returns true, the value is wrapped in <code class="inline">Right</code>.
+Otherwise, the value from <code class="inline">on_false</code> is wrapped in <code class="inline">Left</code>.</p></div>
 
     </div>
 
@@ -200,6 +256,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Alias for <a href="#right/1"><code class="inline">right/1</code></a>.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -207,6 +265,8 @@ Pages
         <a href="#right/1" data-no-tooltip translate="no">right(value)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Wraps a value in the <code class="inline">Right</code> monad, representing a successful computation.</p></div>
 
     </div>
 
@@ -216,6 +276,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Runs the <code class="inline">LazyTaskEither</code> task and returns the result, awaiting the task if necessary.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -223,6 +285,9 @@ Pages
         <a href="#sequence/1" data-no-tooltip translate="no">sequence(list)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Sequences a list of <code class="inline">LazyTaskEither</code> values. If any value is <code class="inline">Left</code>, the sequencing stops
+and the first <code class="inline">Left</code> is returned. Otherwise, it returns a list of all <code class="inline">Right</code> values.</p></div>
 
     </div>
 
@@ -232,6 +297,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Sequences a list of <code class="inline">LazyTaskEither</code> values, accumulating all errors in case of multiple <code class="inline">Left</code> values.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -239,6 +306,8 @@ Pages
         <a href="#to_result/1" data-no-tooltip translate="no">to_result(lazy_task_either)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Converts a <code class="inline">LazyTaskEither</code> monad into an Elixir result tuple.</p></div>
 
     </div>
 
@@ -248,6 +317,8 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Unwraps a <code class="inline">LazyTaskEither</code>, returning the value if it is a <code class="inline">Right</code>, or raising the exception if it is a <code class="inline">Left</code>.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -256,6 +327,9 @@ Pages
 
       </div>
 
+        <div class="summary-synopsis"><p>Traverses a list with a function that returns <code class="inline">LazyTaskEither</code> values,
+collecting the results into a single <code class="inline">LazyTaskEither</code>.</p></div>
+
     </div>
 
     <div class="summary-row">
@@ -263,6 +337,9 @@ Pages
         <a href="#validate/2" data-no-tooltip translate="no">validate(value, validators)</a>
 
       </div>
+
+        <div class="summary-synopsis"><p>Validates a value using a list of validators.
+Returns a <code class="inline">Right</code> if all validators succeed, or a <code class="inline">Left</code> with a list of errors if any validator fails.</p></div>
 
     </div>
 
@@ -336,7 +413,19 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
+<p>Converts an Elixir <code class="inline">{:ok, value}</code> or <code class="inline">{:error, reason}</code> tuple into a <code class="inline">LazyTaskEither</code>.</p><h2 id="from_result/1-examples" class="section-heading">
+  <a href="#from_result/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="9028145608-1">(</span><span class="p" data-group-id="9028145608-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="9028145608-2">}</span><span class="p" data-group-id="9028145608-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="9028145608-3">(</span><span class="n">result</span><span class="p" data-group-id="9028145608-3">)</span><span class="w">
+</span><span class="p" data-group-id="9028145608-4">%</span><span class="nc" data-group-id="9028145608-4">Monex.Either.Right</span><span class="p" data-group-id="9028145608-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="9028145608-4">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">from_result</span><span class="p" data-group-id="9028145608-5">(</span><span class="p" data-group-id="9028145608-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="9028145608-6">}</span><span class="p" data-group-id="9028145608-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="9028145608-7">(</span><span class="n">result</span><span class="p" data-group-id="9028145608-7">)</span><span class="w">
+</span><span class="p" data-group-id="9028145608-8">%</span><span class="nc" data-group-id="9028145608-8">Monex.Either.Left</span><span class="p" data-group-id="9028145608-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="9028145608-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="from_try/1">
@@ -359,7 +448,19 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
+<p>Wraps a function in a <code class="inline">LazyTaskEither</code>, catching exceptions and wrapping them in a <code class="inline">Left</code>.</p><h2 id="from_try/1-examples" class="section-heading">
+  <a href="#from_try/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="6035253471-1">(</span><span class="k" data-group-id="6035253471-2">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">42</span><span class="w"> </span><span class="k" data-group-id="6035253471-2">end</span><span class="p" data-group-id="6035253471-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="6035253471-3">(</span><span class="n">result</span><span class="p" data-group-id="6035253471-3">)</span><span class="w">
+</span><span class="p" data-group-id="6035253471-4">%</span><span class="nc" data-group-id="6035253471-4">Monex.Either.Right</span><span class="p" data-group-id="6035253471-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6035253471-4">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">from_try</span><span class="p" data-group-id="6035253471-5">(</span><span class="k" data-group-id="6035253471-6">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">raise</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="w"> </span><span class="k" data-group-id="6035253471-6">end</span><span class="p" data-group-id="6035253471-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="6035253471-7">(</span><span class="n">result</span><span class="p" data-group-id="6035253471-7">)</span><span class="w">
+</span><span class="p" data-group-id="6035253471-8">%</span><span class="nc" data-group-id="6035253471-8">Monex.Either.Left</span><span class="p" data-group-id="6035253471-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="6035253471-9">%</span><span class="nc" data-group-id="6035253471-9">RuntimeError</span><span class="p" data-group-id="6035253471-9">{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6035253471-9">}</span><span class="p" data-group-id="6035253471-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="left/1">
@@ -382,7 +483,15 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
-
+<p>Wraps a value in the <code class="inline">Left</code> monad, representing a failed computation.</p><h2 id="left/1-examples" class="section-heading">
+  <a href="#left/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7386579556-1">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7386579556-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="7386579556-2">(</span><span class="n">result</span><span class="p" data-group-id="7386579556-2">)</span><span class="w">
+</span><span class="p" data-group-id="7386579556-3">%</span><span class="nc" data-group-id="7386579556-3">Monex.Either.Left</span><span class="p" data-group-id="7386579556-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="7386579556-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="lift_either/1">
@@ -399,7 +508,28 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
   <section class="docstring">
 
+      <div class="specs">
 
+          <pre translate="no"><span class="attribute">@spec</span> lift_either(<a href="Monex.Either.html#t:t/2">Monex.Either.t</a>(left, right)) :: <a href="#t:t/2">t</a>(left, right)
+when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), right: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Converts an <code class="inline">Either</code> value into a <code class="inline">LazyTaskEither</code> monad.</p><h2 id="lift_either/1-examples" class="section-heading">
+  <a href="#lift_either/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">either</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6024759096-1">%</span><span class="nc" data-group-id="6024759096-1">Monex.Either.Right</span><span class="p" data-group-id="6024759096-1">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6024759096-1">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_either</span><span class="p" data-group-id="6024759096-2">(</span><span class="n">either</span><span class="p" data-group-id="6024759096-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="6024759096-3">(</span><span class="n">result</span><span class="p" data-group-id="6024759096-3">)</span><span class="w">
+</span><span class="p" data-group-id="6024759096-4">%</span><span class="nc" data-group-id="6024759096-4">Monex.Either.Right</span><span class="p" data-group-id="6024759096-4">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="6024759096-4">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">either</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="6024759096-5">%</span><span class="nc" data-group-id="6024759096-5">Monex.Either.Left</span><span class="p" data-group-id="6024759096-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6024759096-5">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_either</span><span class="p" data-group-id="6024759096-6">(</span><span class="n">either</span><span class="p" data-group-id="6024759096-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="6024759096-7">(</span><span class="n">result</span><span class="p" data-group-id="6024759096-7">)</span><span class="w">
+</span><span class="p" data-group-id="6024759096-8">%</span><span class="nc" data-group-id="6024759096-8">Monex.Either.Left</span><span class="p" data-group-id="6024759096-8">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="6024759096-8">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="lift_option/2">
@@ -416,7 +546,30 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
   <section class="docstring">
 
+      <div class="specs">
 
+          <pre translate="no"><span class="attribute">@spec</span> lift_option(<a href="Monex.Maybe.html#t:t/1">Monex.Maybe.t</a>(right), (-&gt; left)) :: <a href="#t:t/2">t</a>(left, right)
+when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), right: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Converts a <code class="inline">Maybe</code> value into a <code class="inline">LazyTaskEither</code> monad.
+If the <code class="inline">Maybe</code> is <code class="inline">Just</code>, the value is wrapped in <code class="inline">Right</code>.
+If it is <code class="inline">Nothing</code>, the value from <code class="inline">on_none</code> is wrapped in <code class="inline">Left</code>.</p><h2 id="lift_option/2-examples" class="section-heading">
+  <a href="#lift_option/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">maybe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">just</span><span class="p" data-group-id="9373438926-1">(</span><span class="mi">42</span><span class="p" data-group-id="9373438926-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="9373438926-2">(</span><span class="n">maybe</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="9373438926-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;No value&quot;</span><span class="w"> </span><span class="k" data-group-id="9373438926-3">end</span><span class="p" data-group-id="9373438926-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="9373438926-4">(</span><span class="n">result</span><span class="p" data-group-id="9373438926-4">)</span><span class="w">
+</span><span class="p" data-group-id="9373438926-5">%</span><span class="nc" data-group-id="9373438926-5">Monex.Either.Right</span><span class="p" data-group-id="9373438926-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="9373438926-5">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">maybe</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.Maybe</span><span class="o">.</span><span class="n">nothing</span><span class="p" data-group-id="9373438926-6">(</span><span class="p" data-group-id="9373438926-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_option</span><span class="p" data-group-id="9373438926-7">(</span><span class="n">maybe</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="9373438926-8">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;No value&quot;</span><span class="w"> </span><span class="k" data-group-id="9373438926-8">end</span><span class="p" data-group-id="9373438926-7">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="9373438926-9">(</span><span class="n">result</span><span class="p" data-group-id="9373438926-9">)</span><span class="w">
+</span><span class="p" data-group-id="9373438926-10">%</span><span class="nc" data-group-id="9373438926-10">Monex.Either.Left</span><span class="p" data-group-id="9373438926-10">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;No value&quot;</span><span class="p" data-group-id="9373438926-10">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="lift_predicate/3">
@@ -433,7 +586,28 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
   <section class="docstring">
 
+      <div class="specs">
 
+          <pre translate="no"><span class="attribute">@spec</span> lift_predicate(<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(), (<a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>() -&gt; <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">boolean</a>()), (-&gt; left)) :: <a href="#t:t/2">t</a>(left, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>())
+when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()</pre>
+
+      </div>
+
+<p>Lifts a value into the <code class="inline">LazyTaskEither</code> monad based on a predicate.
+If the predicate returns true, the value is wrapped in <code class="inline">Right</code>.
+Otherwise, the value from <code class="inline">on_false</code> is wrapped in <code class="inline">Left</code>.</p><h2 id="lift_predicate/3-examples" class="section-heading">
+  <a href="#lift_predicate/3-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="5461777575-1">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5461777575-2">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="5461777575-2">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5461777575-3">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="5461777575-3">end</span><span class="p" data-group-id="5461777575-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="5461777575-4">(</span><span class="n">result</span><span class="p" data-group-id="5461777575-4">)</span><span class="w">
+</span><span class="p" data-group-id="5461777575-5">%</span><span class="nc" data-group-id="5461777575-5">Monex.Either.Right</span><span class="p" data-group-id="5461777575-5">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="5461777575-5">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="5461777575-6">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="p" data-group-id="5461777575-7">(</span><span class="ni">&amp;1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p" data-group-id="5461777575-7">)</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="5461777575-8">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="w"> </span><span class="k" data-group-id="5461777575-8">end</span><span class="p" data-group-id="5461777575-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="5461777575-9">(</span><span class="n">result</span><span class="p" data-group-id="5461777575-9">)</span><span class="w">
+</span><span class="p" data-group-id="5461777575-10">%</span><span class="nc" data-group-id="5461777575-10">Monex.Either.Left</span><span class="p" data-group-id="5461777575-10">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="5461777575-10">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="pure/1">
@@ -456,7 +630,15 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
-
+<p>Alias for <a href="#right/1"><code class="inline">right/1</code></a>.</p><h2 id="pure/1-examples" class="section-heading">
+  <a href="#pure/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">pure</span><span class="p" data-group-id="2999921426-1">(</span><span class="mi">42</span><span class="p" data-group-id="2999921426-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2999921426-2">(</span><span class="n">result</span><span class="p" data-group-id="2999921426-2">)</span><span class="w">
+</span><span class="p" data-group-id="2999921426-3">%</span><span class="nc" data-group-id="2999921426-3">Monex.Either.Right</span><span class="p" data-group-id="2999921426-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="2999921426-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="right/1">
@@ -479,7 +661,15 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
-
+<p>Wraps a value in the <code class="inline">Right</code> monad, representing a successful computation.</p><h2 id="right/1-examples" class="section-heading">
+  <a href="#right/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2963979868-1">(</span><span class="mi">42</span><span class="p" data-group-id="2963979868-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2963979868-2">(</span><span class="n">result</span><span class="p" data-group-id="2963979868-2">)</span><span class="w">
+</span><span class="p" data-group-id="2963979868-3">%</span><span class="nc" data-group-id="2963979868-3">Monex.Either.Right</span><span class="p" data-group-id="2963979868-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="2963979868-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="run/1">
@@ -502,7 +692,15 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
-
+<p>Runs the <code class="inline">LazyTaskEither</code> task and returns the result, awaiting the task if necessary.</p><h2 id="run/1-examples" class="section-heading">
+  <a href="#run/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="1298930824-1">(</span><span class="mi">42</span><span class="p" data-group-id="1298930824-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="1298930824-2">(</span><span class="n">result</span><span class="p" data-group-id="1298930824-2">)</span><span class="w">
+</span><span class="p" data-group-id="1298930824-3">%</span><span class="nc" data-group-id="1298930824-3">Monex.Either.Right</span><span class="p" data-group-id="1298930824-3">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="1298930824-3">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="sequence/1">
@@ -525,7 +723,22 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
+<p>Sequences a list of <code class="inline">LazyTaskEither</code> values. If any value is <code class="inline">Left</code>, the sequencing stops
+and the first <code class="inline">Left</code> is returned. Otherwise, it returns a list of all <code class="inline">Right</code> values.</p><h2 id="sequence/1-examples" class="section-heading">
+  <a href="#sequence/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2634612818-1">[</span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2634612818-2">(</span><span class="mi">1</span><span class="p" data-group-id="2634612818-2">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2634612818-3">(</span><span class="mi">2</span><span class="p" data-group-id="2634612818-3">)</span><span class="p" data-group-id="2634612818-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="2634612818-4">(</span><span class="n">tasks</span><span class="p" data-group-id="2634612818-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2634612818-5">(</span><span class="n">result</span><span class="p" data-group-id="2634612818-5">)</span><span class="w">
+</span><span class="p" data-group-id="2634612818-6">%</span><span class="nc" data-group-id="2634612818-6">Monex.Either.Right</span><span class="p" data-group-id="2634612818-6">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2634612818-7">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="2634612818-7">]</span><span class="p" data-group-id="2634612818-6">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2634612818-8">[</span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2634612818-9">(</span><span class="mi">1</span><span class="p" data-group-id="2634612818-9">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="2634612818-10">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2634612818-10">)</span><span class="p" data-group-id="2634612818-8">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">sequence</span><span class="p" data-group-id="2634612818-11">(</span><span class="n">tasks</span><span class="p" data-group-id="2634612818-11">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2634612818-12">(</span><span class="n">result</span><span class="p" data-group-id="2634612818-12">)</span><span class="w">
+</span><span class="p" data-group-id="2634612818-13">%</span><span class="nc" data-group-id="2634612818-13">Monex.Either.Left</span><span class="p" data-group-id="2634612818-13">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="2634612818-13">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="sequence_a/1">
@@ -549,7 +762,16 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
 
       </div>
 
-
+<p>Sequences a list of <code class="inline">LazyTaskEither</code> values, accumulating all errors in case of multiple <code class="inline">Left</code> values.</p><h2 id="sequence_a/1-examples" class="section-heading">
+  <a href="#sequence_a/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">tasks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p" data-group-id="2255363909-1">[</span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="2255363909-2">(</span><span class="mi">1</span><span class="p" data-group-id="2255363909-2">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="2255363909-3">(</span><span class="s">&quot;Error 1&quot;</span><span class="p" data-group-id="2255363909-3">)</span><span class="p">,</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="2255363909-4">(</span><span class="s">&quot;Error 2&quot;</span><span class="p" data-group-id="2255363909-4">)</span><span class="p" data-group-id="2255363909-1">]</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">sequence_a</span><span class="p" data-group-id="2255363909-5">(</span><span class="n">tasks</span><span class="p" data-group-id="2255363909-5">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="2255363909-6">(</span><span class="n">result</span><span class="p" data-group-id="2255363909-6">)</span><span class="w">
+</span><span class="p" data-group-id="2255363909-7">%</span><span class="nc" data-group-id="2255363909-7">Monex.Either.Left</span><span class="p" data-group-id="2255363909-7">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="2255363909-8">[</span><span class="s">&quot;Error 1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Error 2&quot;</span><span class="p" data-group-id="2255363909-8">]</span><span class="p" data-group-id="2255363909-7">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_result/1">
@@ -573,7 +795,19 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
+<p>Converts a <code class="inline">LazyTaskEither</code> monad into an Elixir result tuple.</p><h2 id="to_result/1-examples" class="section-heading">
+  <a href="#to_result/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">lazy_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="4792054210-1">(</span><span class="mi">42</span><span class="p" data-group-id="4792054210-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="4792054210-2">(</span><span class="n">lazy_result</span><span class="p" data-group-id="4792054210-2">)</span><span class="w">
+</span><span class="p" data-group-id="4792054210-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="mi">42</span><span class="p" data-group-id="4792054210-3">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">lazy_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="4792054210-4">(</span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="4792054210-4">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">to_result</span><span class="p" data-group-id="4792054210-5">(</span><span class="n">lazy_error</span><span class="p" data-group-id="4792054210-5">)</span><span class="w">
+</span><span class="p" data-group-id="4792054210-6">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="4792054210-6">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="to_try!/1">
@@ -596,7 +830,19 @@ when left: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">ter
 
       </div>
 
+<p>Unwraps a <code class="inline">LazyTaskEither</code>, returning the value if it is a <code class="inline">Right</code>, or raising the exception if it is a <code class="inline">Left</code>.</p><h2 id="to_try!/1-examples" class="section-heading">
+  <a href="#to_try!/1-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">lazy_result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="0572711550-1">(</span><span class="mi">42</span><span class="p" data-group-id="0572711550-1">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="0572711550-2">(</span><span class="n">lazy_result</span><span class="p" data-group-id="0572711550-2">)</span><span class="w">
+</span><span class="mi">42</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">lazy_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="0572711550-3">(</span><span class="p" data-group-id="0572711550-4">%</span><span class="nc" data-group-id="0572711550-4">RuntimeError</span><span class="p" data-group-id="0572711550-4">{</span><span class="ss">message</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;error&quot;</span><span class="p" data-group-id="0572711550-4">}</span><span class="p" data-group-id="0572711550-3">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">to_try!</span><span class="p" data-group-id="0572711550-5">(</span><span class="n">lazy_error</span><span class="p" data-group-id="0572711550-5">)</span><span class="w">
+</span><span class="gt">** (RuntimeError) error</span></code></pre>
   </section>
 </section>
 <section class="detail" id="traverse/2">
@@ -620,7 +866,21 @@ when input: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
 
       </div>
 
+<p>Traverses a list with a function that returns <code class="inline">LazyTaskEither</code> values,
+collecting the results into a single <code class="inline">LazyTaskEither</code>.</p><h2 id="traverse/2-examples" class="section-heading">
+  <a href="#traverse/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">is_positive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="7940492035-1">fn</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">lift_predicate</span><span class="p" data-group-id="7940492035-2">(</span><span class="n">num</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7940492035-3">fn</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="k" data-group-id="7940492035-3">end</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7940492035-4">fn</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nc">Integer</span><span class="o">.</span><span class="n">to_string</span><span class="p" data-group-id="7940492035-5">(</span><span class="n">num</span><span class="p" data-group-id="7940492035-5">)</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s">&quot; is not positive&quot;</span><span class="w"> </span><span class="k" data-group-id="7940492035-4">end</span><span class="p" data-group-id="7940492035-2">)</span><span class="w"> </span><span class="k" data-group-id="7940492035-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">traverse</span><span class="p" data-group-id="7940492035-6">(</span><span class="p" data-group-id="7940492035-7">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7940492035-7">]</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7940492035-8">fn</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">is_positive</span><span class="o">.</span><span class="p" data-group-id="7940492035-9">(</span><span class="n">num</span><span class="p" data-group-id="7940492035-9">)</span><span class="w"> </span><span class="k" data-group-id="7940492035-8">end</span><span class="p" data-group-id="7940492035-6">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="7940492035-10">(</span><span class="n">result</span><span class="p" data-group-id="7940492035-10">)</span><span class="w">
+</span><span class="p" data-group-id="7940492035-11">%</span><span class="nc" data-group-id="7940492035-11">Monex.Either.Right</span><span class="p" data-group-id="7940492035-11">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7940492035-12">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7940492035-12">]</span><span class="p" data-group-id="7940492035-11">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">traverse</span><span class="p" data-group-id="7940492035-13">(</span><span class="p" data-group-id="7940492035-14">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p" data-group-id="7940492035-14">]</span><span class="p">,</span><span class="w"> </span><span class="k" data-group-id="7940492035-15">fn</span><span class="w"> </span><span class="n">num</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">is_positive</span><span class="o">.</span><span class="p" data-group-id="7940492035-16">(</span><span class="n">num</span><span class="p" data-group-id="7940492035-16">)</span><span class="w"> </span><span class="k" data-group-id="7940492035-15">end</span><span class="p" data-group-id="7940492035-13">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="7940492035-17">(</span><span class="n">result</span><span class="p" data-group-id="7940492035-17">)</span><span class="w">
+</span><span class="p" data-group-id="7940492035-18">%</span><span class="nc" data-group-id="7940492035-18">Monex.Either.Left</span><span class="p" data-group-id="7940492035-18">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;-2 is not positive&quot;</span><span class="p" data-group-id="7940492035-18">}</span></code></pre>
   </section>
 </section>
 <section class="detail" id="validate/2">
@@ -644,7 +904,22 @@ when error: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">te
 
       </div>
 
+<p>Validates a value using a list of validators.
+Returns a <code class="inline">Right</code> if all validators succeed, or a <code class="inline">Left</code> with a list of errors if any validator fails.</p><h2 id="validate/2-examples" class="section-heading">
+  <a href="#validate/2-examples" class="hover-link">
+    <i class="ri-link-m" aria-hidden="true"></i>
+  </a>
+  <span class="text">Examples</span>
+</h2>
+<pre><code class="makeup elixir" translate="no"><span class="gp unselectable">iex&gt; </span><span class="n">validator_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="7533156892-1">fn</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7533156892-2">(</span><span class="n">value</span><span class="p" data-group-id="7533156892-2">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7533156892-3">(</span><span class="s">&quot;too small&quot;</span><span class="p" data-group-id="7533156892-3">)</span><span class="w"> </span><span class="k" data-group-id="7533156892-1">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">validator_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k" data-group-id="7533156892-4">fn</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">rem</span><span class="p" data-group-id="7533156892-5">(</span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p" data-group-id="7533156892-5">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="ss">do</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">right</span><span class="p" data-group-id="7533156892-6">(</span><span class="n">value</span><span class="p" data-group-id="7533156892-6">)</span><span class="p">,</span><span class="w"> </span><span class="ss">else</span><span class="p">:</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">left</span><span class="p" data-group-id="7533156892-7">(</span><span class="s">&quot;not even&quot;</span><span class="p" data-group-id="7533156892-7">)</span><span class="w"> </span><span class="k" data-group-id="7533156892-4">end</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="7533156892-8">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7533156892-9">[</span><span class="n">validator_1</span><span class="p">,</span><span class="w"> </span><span class="n">validator_2</span><span class="p" data-group-id="7533156892-9">]</span><span class="p" data-group-id="7533156892-8">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="7533156892-10">(</span><span class="n">result</span><span class="p" data-group-id="7533156892-10">)</span><span class="w">
+</span><span class="p" data-group-id="7533156892-11">%</span><span class="nc" data-group-id="7533156892-11">Monex.Either.Right</span><span class="p" data-group-id="7533156892-11">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p" data-group-id="7533156892-11">}</span><span class="w">
 
+</span><span class="gp unselectable">iex&gt; </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">validate</span><span class="p" data-group-id="7533156892-12">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="7533156892-13">[</span><span class="n">validator_1</span><span class="p">,</span><span class="w"> </span><span class="n">validator_2</span><span class="p" data-group-id="7533156892-13">]</span><span class="p" data-group-id="7533156892-12">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="nc">Monex.LazyTaskEither</span><span class="o">.</span><span class="n">run</span><span class="p" data-group-id="7533156892-14">(</span><span class="n">result</span><span class="p" data-group-id="7533156892-14">)</span><span class="w">
+</span><span class="p" data-group-id="7533156892-15">%</span><span class="nc" data-group-id="7533156892-15">Monex.Either.Left</span><span class="p" data-group-id="7533156892-15">{</span><span class="ss">value</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="7533156892-16">[</span><span class="s">&quot;not even&quot;</span><span class="p" data-group-id="7533156892-16">]</span><span class="p" data-group-id="7533156892-15">}</span></code></pre>
   </section>
 </section>
 

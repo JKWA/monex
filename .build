@@ -23,7 +23,6 @@ Monex.Monad.html
 Monex.Operators.html
 Monex.Ord.html
 Monex.Predicate.html
-Monex.html
 api-reference.html
 dist/handlebars.runtime-NWIB6V2M.js
 dist/handlebars.templates-K7URE6B4.js
@@ -42,8 +41,8 @@ dist/lato-latin-ext-300-normal-VPGGJKJL.woff2
 dist/lato-latin-ext-400-normal-N27NCBWW.woff2
 dist/lato-latin-ext-700-normal-Q2L5DVMW.woff2
 dist/remixicon-NKANDIL5.woff2
-dist/search_data-65CC190E.js
-dist/sidebar_items-2860B2B9.js
+dist/search_data-377AD1DC.js
+dist/sidebar_items-E7270DD6.js
 index.html
 readme.html
 search.html
