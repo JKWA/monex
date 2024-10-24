@@ -1,5 +1,7 @@
 # Monex
 
+[View the code on GitHub](https://github.com/JKWA/monex)
+
 Elixir is a dynamically typed language and lacks the static type system typically used in functional languages to enforce monadic patterns. Instead, Elixir leverages pattern matching, `defimpl`, and branded structs to create structured abstractions that behave like monads. Monex builds on these principles to provide useful tools for functional programming.
 
 ## Features
