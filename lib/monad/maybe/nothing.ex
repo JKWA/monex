@@ -1,8 +1,29 @@
 defmodule Monex.Maybe.Nothing do
+  @moduledoc """
+  Represents the `Nothing` variant of the `Maybe` monad, used to model the absence of a value.
+
+  This module implements the following protocols:
+    - `Monex.Monad`: Implements the `bind/2`, `map/2`, and `ap/2` functions for monadic operations.
+    - `Monex.Foldable`: Provides `fold_l/3` and `fold_r/3` to handle folding with default behavior for `Nothing`.
+    - `Monex.Eq`: Defines equality checks between `Nothing` and other `Maybe` values.
+    - `Monex.Ord`: Defines ordering logic for `Nothing` and `Just` values.
+
+  The `Nothing` monad provides default implementations where the absence of a value is propagated through operations.
+  """
+
   defstruct []
 
   @type t :: %__MODULE__{}
 
+  @doc """
+  Creates a new `Nothing` value.
+
+  ## Examples
+
+      iex> Monex.Maybe.Nothing.pure()
+      %Monex.Maybe.Nothing{}
+  """
+  @spec pure() :: t()
   def pure, do: %__MODULE__{}
 
   defimpl Monex.Monad, for: Monex.Maybe.Nothing do
@@ -20,6 +41,7 @@ defmodule Monex.Maybe.Nothing do
 
   defimpl String.Chars do
     alias Monex.Maybe.Nothing
+
     def to_string(%Nothing{}), do: "Nothing"
   end
 
@@ -47,7 +69,6 @@ defmodule Monex.Maybe.Nothing do
 
     def lt?(%Nothing{}, %Just{}), do: true
     def lt?(%Nothing{}, %Nothing{}), do: false
-
     def le?(a, b), do: not Monex.Ord.gt?(a, b)
     def gt?(a, b), do: Monex.Ord.lt?(b, a)
     def ge?(a, b), do: not Monex.Ord.lt?(a, b)

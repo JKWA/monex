@@ -1,9 +1,31 @@
 defmodule Monex.Either.Left do
+  @moduledoc """
+  Represents the `Left` variant of the `Either` monad, used to model an error or failure.
+
+  This module implements the following protocols:
+    - `Monex.Monad`: Implements the `bind/2`, `map/2`, and `ap/2` functions for monadic operations.
+    - `Monex.Foldable`: Provides `fold_l/3` and `fold_r/3` to handle folding for `Left` values.
+    - `Monex.Eq`: Defines equality checks between `Left` and other `Either` values.
+    - `Monex.Ord`: Defines ordering logic for `Left` and `Right` values.
+
+  The `Left` monad propagates the wrapped error through operations without executing the success logic.
+  """
   @enforce_keys [:value]
   defstruct [:value]
 
   @type t(value) :: %__MODULE__{value: value}
 
+  @doc """
+  Creates a new `Left` value.
+
+  The `pure/1` function wraps a value in the `Left` monad, representing an error or failure.
+
+  ## Examples
+
+      iex> Monex.Either.Left.pure("error")
+      %Monex.Either.Left{value: "error"}
+  """
+  @spec pure(value) :: t(value) when value: term()
   def pure(value), do: %__MODULE__{value: value}
 
   defimpl Monex.Monad do

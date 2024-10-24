@@ -16,7 +16,9 @@ defmodule LazyTaskTest do
       lazy_value = LazyTask.pure(41)
 
       result =
-        lazy_func |> ap(lazy_value) |> LazyTask.run()
+        lazy_func
+        |> ap(lazy_value)
+        |> LazyTask.run()
 
       assert result == 42
     end
@@ -24,10 +26,8 @@ defmodule LazyTaskTest do
 
   describe "bind/2" do
     test "chains lazy tasks together" do
-      lazy = LazyTask.pure(42)
-
       result =
-        lazy
+        LazyTask.pure(42)
         |> bind(fn x -> LazyTask.pure(x * 2) end)
         |> LazyTask.run()
 
@@ -37,8 +37,11 @@ defmodule LazyTaskTest do
 
   describe "map/2" do
     test "maps over a lazy task" do
-      lazy = LazyTask.pure(42)
-      result = lazy |> map(&(&1 + 1)) |> LazyTask.run()
+      result =
+        LazyTask.pure(42)
+        |> map(&(&1 + 1))
+        |> LazyTask.run()
+
       assert result == 43
     end
   end

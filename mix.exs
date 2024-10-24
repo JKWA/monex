@@ -8,12 +8,15 @@ defmodule Monex.MixProject do
       elixir: "~> 1.16",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      # Add this line to define elixirc_paths
-      elixirc_paths: elixirc_paths(Mix.env())
+      elixirc_paths: elixirc_paths(Mix.env()),
+      docs: [
+        main: "readme",
+        extras: ["README.md"],
+        filter_prefix: "Examples"
+      ]
     ]
   end
 
-  # Define elixirc_paths to include "examples/" directory
   defp elixirc_paths(:test), do: ["lib", "test/support", "examples"]
   defp elixirc_paths(_), do: ["lib", "examples"]
 
@@ -25,6 +28,7 @@ defmodule Monex.MixProject do
 
   defp deps do
     [
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:dialyxir, "~> 1.4", only: :dev, runtime: false},
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]

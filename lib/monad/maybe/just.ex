@@ -1,10 +1,38 @@
 defmodule Monex.Maybe.Just do
+  @moduledoc """
+  Represents the `Just` variant of the `Maybe` monad, used to model the presence of a value.
+
+  This module implements the following protocols:
+    - `Monex.Monad`: Implements the `bind/2`, `map/2`, and `ap/2` functions for monadic operations.
+    - `Monex.Foldable`: Provides `fold_l/3` and `fold_r/3` to handle folding for `Just` values.
+    - `Monex.Eq`: Defines equality checks between `Just` and other `Maybe` values.
+    - `Monex.Ord`: Defines ordering logic for `Just` and `Nothing` values.
+
+  The `Just` monad provides implementations that propagate the wrapped value through operations.
+  """
+
   @enforce_keys [:value]
   defstruct [:value]
 
   @type t(value) :: %__MODULE__{value: value}
 
-  @spec pure(value) :: Monex.Maybe.Just.t(value) when value: term()
+  @doc """
+  Creates a new `Just` value.
+
+  The `pure/1` function wraps a value in the `Just` monad, representing the presence of the value.
+
+  ## Examples
+
+      iex> Monex.Maybe.Just.pure(5)
+      %Monex.Maybe.Just{value: 5}
+
+  ### Raises
+  - `ArgumentError` if `nil` is provided.
+
+      iex> Monex.Maybe.Just.pure(nil)
+      ** (ArgumentError) Cannot wrap nil in a Just
+  """
+  @spec pure(value) :: t(value) when value: term()
   def pure(nil), do: raise(ArgumentError, "Cannot wrap nil in a Just")
   def pure(value), do: %__MODULE__{value: value}
 

@@ -1,9 +1,32 @@
 defmodule Monex.Either.Right do
+  @moduledoc """
+  Represents the `Right` variant of the `Either` monad, used to model a success or valid result.
+
+  This module implements the following protocols:
+    - `Monex.Monad`: Implements the `bind/2`, `map/2`, and `ap/2` functions for monadic operations.
+    - `Monex.Foldable`: Provides `fold_l/3` and `fold_r/3` to handle folding for `Right` values.
+    - `Monex.Eq`: Defines equality checks between `Right` and other `Either` values.
+    - `Monex.Ord`: Defines ordering logic for `Right` and `Left` values.
+
+  The `Right` monad represents a valid result, and the contained value is propagated through operations.
+  """
+
   @enforce_keys [:value]
   defstruct [:value]
 
   @type t(value) :: %__MODULE__{value: value}
 
+  @doc """
+  Creates a new `Right` value.
+
+  The `pure/1` function wraps a value in the `Right` monad, representing a valid result.
+
+  ## Examples
+
+      iex> Monex.Either.Right.pure(5)
+      %Monex.Either.Right{value: 5}
+  """
+  @spec pure(value) :: t(value) when value: term()
   def pure(value), do: %__MODULE__{value: value}
 
   defimpl Monex.Monad do

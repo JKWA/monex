@@ -1,11 +1,41 @@
 defmodule Monex.Identity do
+  @moduledoc """
+  The `Monex.Identity` module represents the identity monad, where values are simply wrapped in a structure
+  and operations are applied directly to those values.
+
+  This module implements the following protocols:
+    - `Monex.Monad`: Implements the `bind/2`, `map/2`, and `ap/2` functions for monadic operations.
+    - `Monex.Eq`: Defines equality checks for `Identity` values.
+    - `Monex.Ord`: Defines ordering logic for `Identity` values.
+    - `String.Chars`: Converts an `Identity` value into a string representation.
+
+  The `Identity` monad provides a way to wrap a value in a minimal context and perform monadic operations.
+  """
   @enforce_keys [:value]
   defstruct [:value]
 
   @type t(value) :: %__MODULE__{value: value}
 
+  @doc """
+  Creates a new `Identity` value by wrapping a given value.
+
+  ## Examples
+
+      iex> Monex.Identity.pure(5)
+      %Monex.Identity{value: 5}
+  """
+  @spec pure(value) :: t(value) when value: term()
   def pure(value), do: %__MODULE__{value: value}
 
+  @doc """
+  Extracts the value from an `Identity`.
+
+  ## Examples
+
+      iex> Monex.Identity.extract(Monex.Identity.pure(5))
+      5
+  """
+  @spec extract(t(value)) :: value when value: term()
   def extract(%__MODULE__{value: value}), do: value
 
   def get_eq(custom_eq) do
